@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <center>
+    {% if query %}
+      <h1>Search Results {{query}}</h1>
+      <br/>
+      {% for movie in movies %}
+        {{movie}} <br/>
+      {% endfor %}
+
+
+    {% else %}
+      <h1>Type your Search</h1>
+
+
+      </center>
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}

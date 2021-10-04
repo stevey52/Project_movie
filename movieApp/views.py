@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import *
+from django.db.models import Q # new
 from .models import *
 
 # Create your views here.
@@ -20,3 +21,19 @@ class UpcomingMovies(ListView):
 class Upcoming_details(DetailView):
     model = Upcoming
     template_name = "upcomingDetail.html"
+
+
+class SearchResultsView(ListView):
+    template_name = 'homeView.html'
+    model = Movie_article
+
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(title__icontains=query)
+
+        else:
+            object_list = self.model.objects.none()
+
+        return object_list

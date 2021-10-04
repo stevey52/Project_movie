@@ -26,6 +26,14 @@
   <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
   <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
 </ul>
+
+<form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
+  <!-- {% csrf_token %} -->
+          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
+          name="q">
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+
 <a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>
 
   <style media="screen">
