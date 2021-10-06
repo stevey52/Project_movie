@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import *
-from django.db.models import Q # new
+from django.core.paginator import Paginator #importing module for breaking pages
 from .models import *
 
 # Create your views here.
 class HomePage(ListView):
     model = Movie_article
     template_name = "homeView.html"
+    paginate_by = 12  #diving pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
 class DetailsPage(DetailView):
@@ -22,7 +23,7 @@ class Upcoming_details(DetailView):
     model = Upcoming
     template_name = "upcomingDetail.html"
 
-
+#search functionality buy quering the database from user inputs
 class SearchResultsView(ListView):
     template_name = 'homeView.html'
     model = Movie_article

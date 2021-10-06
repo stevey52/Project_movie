@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
 <link rel="stylesheet" href="{% static "css/homeView.css"%}">
+<link rel="stylesheet" href="{% static "css/base.css" %}">
 <script src="{% static "java/home.js"%}"></script>
 
 
@@ -22,7 +23,7 @@
   </head>
   <body>
     <ul class="nav nav-pills">
-  <li role="presentation" ><a href="#"></a></li>
+  <!-- <li role="presentation" ><a href="#"></a></li> -->
   <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
   <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
 </ul>
@@ -36,17 +37,49 @@
 
 <a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>
 
+
+<!-- #creating the next and previous page -->
+
+
+      {% for movie in page_obj %}
+    <!-- {# Each "movie" is a Movie_article model object. #} -->
+    {{ movie.full_name|upper }}
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a id="nextPrevious" href="?page=1">&laquo; first</a>
+            <a id="nextPrevious" href="?page={{ page_obj.previous_page_number }}">| previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a id="nextPrevious" href="?page={{ page_obj.next_page_number }}">next</a> |
+            <a  id="nextPrevious" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
   <style media="screen">
     body{
       background-color: #e69191;
     }
   </style>
+
     {% block content%}
 
 
     {%endblock%}
 
+    <center>
+    <legend> <a href="#"><strong>contact</strong></a> </legend>
+  </center>
 
 
+<footer>Mtawa Technologies.inc (c) 2021.</footer>
   </body>
 </html>
