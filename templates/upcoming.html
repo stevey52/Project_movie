@@ -2,6 +2,32 @@
 {% load static %}
 
 {% block content%}
+<!-- #creating the next and previous page -->
+
+
+      {% for movie in page_obj %}
+    <!-- {# Each "movie" is a Movie_article model object. #} -->
+    {{ movie.full_name|upper }}
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a id="nextPrevious" href="?page=1">&laquo; first</a>
+            <a id="nextPrevious" href="?page={{ page_obj.previous_page_number }}">| previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a id="nextPrevious" href="?page={{ page_obj.next_page_number }}">next</a> |
+            <a  id="nextPrevious" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 <h1 align="center">Upcoming Movies</h1>
 
 {% for Upcoming in object_list %}

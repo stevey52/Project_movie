@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import timedelta
 import datetime
 from django.urls import reverse
 from django.utils.timezone import now
@@ -39,7 +38,7 @@ class Movie_article(models.Model):
 
 #preview only first 50 characters of the body
     def snippest(self):
-        return self.body[:50] + "..."
+        return self.body[:300] + "..."
 
 
 class Upcoming(models.Model):
@@ -54,17 +53,3 @@ class Upcoming(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     release_Date = models.DateField(u'Release Date') #calendar for date picker
     body = models.TextField(null=True)
-
-    def __str__(self):
-        return "code: " + str(self.code)
-
-    @property
-    def delete_in_10_seconds(self):
-        time = self.date + timedelta(seconds=10)
-        query = Upcoming.objects.get(Upcoming=self.Upcoming)
-        return delete_in_10_seconds()
-
-        while True:
-            if time > now():
-                query.delete()
-                break
