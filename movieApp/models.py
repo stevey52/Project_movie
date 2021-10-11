@@ -38,7 +38,7 @@ class Movie_article(models.Model):
 
 #preview only first 50 characters of the body
     def snippest(self):
-        return self.body[:300] + "..."
+        return self.body[:200] + "..."
 
 
 class Upcoming(models.Model):

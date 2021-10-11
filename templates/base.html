@@ -29,7 +29,7 @@
 </ul>
 
 <form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
-  <!-- {% csrf_token %} -->
+  {% csrf_token %}
           <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
           name="q">
         <button type="submit" class="btn btn-success">Search</button>
@@ -51,7 +51,7 @@
     {%endblock%}
 
     <center>
-    <legend> <a href="#"><strong>contact</strong></a> </legend>
+    <legend> <a href="{% url 'contact_us'%}"><strong>contact</strong></a> </legend>
   </center>
 
 

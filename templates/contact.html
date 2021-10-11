@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<center>
+  <div class="container">
+{% if name %}
+    <h2>Thanks {{send }}!</h2>
+    <p>We received your email and will respond shortly.....</p>
+
+
+
+{% else %}
+
+
+<div class="form-group">
+    <form class="" method=GET>
+        {% csrf_token %}
+      <label for="users_name">Name</label>
+      <input type="text" class="form-control input-lg" name="users_name" value="{{request.GET.name}}" placeholder="Your Name">
+      <br></br>
+
+          <label for="">Email</label>
+      <input type="email" class="form-control input-lg" name="users_email" value="{{request.GET.email}}" placeholder="Your Email">
+        <br></br>
+
+        <h4>Message</h4>
+    <textarea name="message" rows="8" cols="100"></textarea>
+      <br></br>
+    <button class="btn btn-success btn-lg" type="submit" name="button">Send</button>
+
+    </form>
+
+</div>
+{% endif %}
+
+  <p>Altenatively contact us through Email: 2daymoviez@gmail.com</p>
+</center>
+
+
+{% endblock %}
