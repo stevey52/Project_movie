@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>2dayMovies Hot Picks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -26,6 +27,7 @@
   <!-- <li role="presentation" ><a href="#"></a></li> -->
   <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
   <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
+  <li role="presentation"><a href="{% url 'contact_us'%}">contact</a></li>
 </ul>
 
 <form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
@@ -50,11 +52,9 @@
 
     {%endblock%}
 
-    <center>
-    <legend> <a href="{% url 'contact_us'%}"><strong>contact</strong></a> </legend>
-  </center>
 
 
-<footer>Mtawa Technologies.inc (c) 2021.</footer>
+
+<!-- <footer>Mtawa Technologies.inc (c) 2021.</footer> -->
   </body>
 </html>

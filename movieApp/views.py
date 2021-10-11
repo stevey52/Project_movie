@@ -12,7 +12,7 @@ from django.conf import settings
 class HomePage(ListView):
     model = Movie_article
     template_name = "homeView.html"
-    paginate_by = 12  #diving pages contents(each page to have 12 contents)
+    paginate_by = 8  #diving pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
 class DetailsPage(DetailView):
