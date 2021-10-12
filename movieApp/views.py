@@ -5,7 +5,6 @@ from .models import *
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import BadHeaderError, send_mail
 from django.conf import settings
-from PIL import Image
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
 
@@ -73,7 +72,7 @@ class ContactUs(TemplateView):
                 email,
                 name,
                 sent_message,
-                [""],
+                [],
                 )
 
             except BadHeaderError:

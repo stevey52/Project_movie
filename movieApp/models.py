@@ -2,7 +2,7 @@ from django.db import models
 import datetime
 from django.urls import reverse
 from django.utils.timezone import now
-from PIL import Image
+
 
 
 YEAR_CHOICES = []
