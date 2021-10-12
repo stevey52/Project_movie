@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.utils.timezone import now
 
 
-
 YEAR_CHOICES = []
 for r in range(1980, (datetime.datetime.now().year+1)):
     YEAR_CHOICES.append((r,r))

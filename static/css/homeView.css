@@ -62,14 +62,14 @@
     bottom: 0;
     right: 0;
     margin: auto;
-    background: #000000 url(img/link.png) no-repeat center 20%;
+    background: #cacccc url(img/link.png) no-repeat center 20%;
     background-size:50px 50px;
     opacity:0;
     filter:alpha(opacity=0);/*For IE6 - IE8*/
     transition:all 0.6s;
 }
 #rig li:hover .rig-overlay {
-    opacity:0.8;
+    opacity:0.2;
 }
 
 /* If have captions */

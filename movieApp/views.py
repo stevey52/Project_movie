@@ -72,7 +72,7 @@ class ContactUs(TemplateView):
                 email,
                 name,
                 sent_message,
-                [],
+                ['stevenmtawa@gmail.com'],
                 )
 
             except BadHeaderError:
