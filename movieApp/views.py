@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.views.generic import *
 from django.core.paginator import Paginator #importing module for breaking pages
 from .models import *
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse
+from django.core.mail import send_mail
+from.forms import EmailForm
 from django.conf import settings
+import os
+import environ
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
 
@@ -55,36 +58,43 @@ class ReadMore(TemplateView):
 
         return response
 
-class ContactUs(TemplateView):
-    template_name = "contact.html"
+# Sending an Email
 
+def sendMail(request):
 
-    def contact(request):
-        name = request.GET.get["users_name", '']
-        email = request.GET.get["users_email", '']
-        sent_message = request.GET.get["message",'']
-        # send = request.GET.get["message",'']
+    #create a variable to keep track of the form
+    messageSent = False
 
-        if name and email and sent_message:
-            try:
-                # send Email
-                send_mail(
-                email,
-                name,
-                sent_message,
-                ['stevenmtawa@gmail.com'],
-                )
+    # check if form has been submitted
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        sender = request.POST['sender']
+        senderEmail = request.POST['sender_email']
 
-            except BadHeaderError:
-                return HttpResponse('Invalid Header Found.')
+        # check if data from form is clean
 
-            return HttpResponseRedirect('/contact/thanks')
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = "Sender " + sender
+            message = cd['message']
 
-        else:
-            # In reality we'd use a form class
-            # to get proper validation errors.
-            return HttpResponse('Make sure all fields are entered and valid.')
+            message1 = message + "\n" + senderEmail
 
-            # return render(request, "contact.html",{"name":name})
-        # else:
-            # return render(request, "contact.html", {})
+            # send the email to the recipient
+
+            send_mail(subject, message1,
+                    settings.DEFAULT_FROM_EMAIL, [os.environ.get('FROM_EMAIL')])
+
+            # set the variable initially created to True
+
+            messageSent = True
+
+    else:
+        form = EmailForm()
+
+    return render(request, 'contact.html', {
+
+        'form':form,
+        'messageSent':messageSent,
+
+    })

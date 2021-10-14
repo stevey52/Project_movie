@@ -5,36 +5,37 @@
 
 <center>
   <div class="container">
-{% if name %}
-    <h2>Thanks {{send }}!</h2>
-    <p>We received your email and will respond shortly.....</p>
+
+    {% if messageSent %}
+   <div class="container">
+     <h3><strong>Email Sent successfully</strong></h3>
+     <br></br>
+
+     <p>Thank you <h2>{{request.POST.sender}}!!</h2>for contacting us we'll get back to you shortly!! {{ form.cleaned_data.to }}</p>
+   </div>
+   {% else %}
+   <div class="container">
+     <!-- <h3><strong>Send E-mail</strong></h3> -->
+
+     <form method="post">
+       {% csrf_token %} {{ form.as_p }}
+       <br />
+       <div class="text-center">
+
+         <input
+           type="submit"
+           class="btn-success btn-lg"
+           style="width: 25%"
+           value="SEND"
+         />
+       </div>
+     </form>
+   </div>
+   {% endif %}
 
 
-
-{% else %}
-
-
-<div class="form-group">
-    <form class="" method=GET>
-        {% csrf_token %}
-      <label for="users_name">Name</label>
-      <input type="text" class="form-control input-lg" name="users_name" value="{{request.GET.name}}" placeholder="Your Name">
-      <br></br>
-
-          <label for="">Email</label>
-      <input type="email" class="form-control input-lg" name="users_email" value="{{request.GET.email}}" placeholder="Your Email">
-        <br></br>
-
-        <h4>Message</h4>
-    <textarea name="message" rows="8" cols="100"></textarea>
-      <br></br>
-    <button class="btn btn-success btn-lg" type="submit" name="button">Send</button>
-
-    </form>
-
-</div>
-{% endif %}
-
+    </div>
+    <br></br>
   <p>For Support Email@: 2daymoviez@gmail.com</p>
 </center>
 
