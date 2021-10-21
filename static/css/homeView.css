@@ -62,7 +62,7 @@
     bottom: 0;
     right: 0;
     margin: auto;
-    background: #cacccc url(img/link.png) no-repeat center 20%;
+    background: #000000 url(img/link.png) no-repeat center 20%;
     background-size:50px 50px;
     opacity:0;
     filter:alpha(opacity=0);/*For IE6 - IE8*/
@@ -86,11 +86,11 @@
     font-weight:bold;
     font-family: 'Oswald', sans-serif;
     font-weight:normal!important;
-    top:40%;
+    top:20%;
     color:white;
     opacity:0;
     filter:alpha(opacity=0);/*For older IE*/
-    transform:translateY(-20px);
+    transform:translateY(-10px);
     transition:all .3s;
 }
 #rig li:hover .rig-text {
