@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <!-- <meta charset="utf-8"> -->
+    <meta charset="UTF-8" />
+    <title>2dayMovies Hot Picks</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="Get Hot High Quality Movies with easy torrent download in just one-click" />
+
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'css/homeView.css'%}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<script src="{% static 'java/home.js'%}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"  -->
+  <!-- integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
+
+  </head>
+  <body>
+
+
+    <ul class="nav nav-pills">
+  <!-- <li role="presentation" ><a href="#"></a></li> -->
+  <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
+  <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
+  <li role="presentation"><a href="{% url 'contact_us'%}">contact</a></li>
+</ul>
+
+<div class="container">
+
+<!-- form for searching movies -->
+<form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
+  {% csrf_token %}
+          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
+          name="q">
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+</div>
+
+<!-- logo with link to back home -->
+<a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>
+
+
+
+  <style media="screen">
+    body{
+      background-color: #fafcfc;
+    }
+  </style>
+
+    {% block content%}
+
+
+    {%endblock%}
+
+
+
+
+<!-- <footer>Mtawa Technologies.inc (c) 2021.</footer> -->
+  </body>
+
+</html>
