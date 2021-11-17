@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
 # slug added to capture name from SlugField to url
-    path("old-is-gold/",Old_Gold, name='old_is_gold'),
+    path("Old-is-gold/",OldGold.as_view(), name='oldMovies'),
     path("contact-us/",sendMail, name='contact_us'),
     path("about-movie/",ReadMore.as_view(),name="read_more"),
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),

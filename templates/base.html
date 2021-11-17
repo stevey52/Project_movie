@@ -36,21 +36,21 @@ integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69p
     <ul class="nav nav-pills">
   <!-- <li role="presentation" ><a href="#"></a></li> -->
   <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
-  <li role="presentation"><a href="{% url 'old_is_gold'%}">Old is Gold</a></li>
+  <li role="presentation"><a href="{% url 'oldMovies'%}">Old is Gold</a></li>
   <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
   <li role="presentation"><a href="{% url 'contact_us'%}">contact</a></li>
 </ul>
 
 <div class="container">
 
-<!-- form for searching movies -->
-<form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
-  {% csrf_token %}
-          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
-          name="q">
-        <button type="submit" class="btn btn-success">Search</button>
-      </form>
-</div>
+  <!-- form for searching movies -->
+  <form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
+    {% csrf_token %}
+            <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
+            name="q">
+          <button type="submit" class="btn btn-success">Search</button>
+        </form>
+  </div>
 
 <!-- logo with link to back home -->
 <a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>

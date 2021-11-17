@@ -8,6 +8,11 @@ YEAR_CHOICES = []
 for r in range(1940, (datetime.datetime.now().year+1)):
     YEAR_CHOICES.append((r,r))
 
+
+CHOOSE_YEAR = []
+for y in range(1940, (datetime.datetime.now().year+1)):
+    CHOOSE_YEAR.append((y,y))
+
 # Create your models here.
 class Movie_article(models.Model):
     title = models.CharField(max_length=200)
@@ -59,7 +64,7 @@ class Upcoming(models.Model):
 
 
 #creating a model for Old is Gold Section
-class OldisGold(models.Model):
+class Old_is_Gold(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(null=False, unique=True)
     synopsis = models.CharField(max_length=50,default="Synopsis")
@@ -67,7 +72,7 @@ class OldisGold(models.Model):
     genre1 = models.CharField(max_length=50,null=True)
     genre2 = models.CharField(max_length=50,null=True)
     genre3 = models.CharField(max_length=50,default="...")
-    year = models.IntegerField(('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+    year = models.IntegerField(('year'),choices=CHOOSE_YEAR, default=datetime.datetime.now().year)
     download_720p = models.CharField(max_length=200,null=True)
     download_1080p = models.CharField(max_length=200,null=True)
     download_2160p = models.CharField(max_length=200,null=True)

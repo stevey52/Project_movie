@@ -98,8 +98,8 @@ def sendMail(request):
 
 
 
-class Old_Gold(ListView):
-    model = OldisGold
+class OldGold(ListView):
+    model = Old_is_Gold
     template_name = "oldgold.html"
     paginate_by = 12  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
