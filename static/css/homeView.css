@@ -45,15 +45,15 @@ img {
 /* If have the image layer */
 .rig-img {
     display:block;
-    /* width: 100%; */
-    /* height: auto; */
+    width: 100%;
+    height: auto;
     border:none;
     transform:scale(1);
     transition:all 1s;
 }
 
 #rig li:hover .rig-img {
-    transform:scale(1.05);
+    transform:scale(1.08);
 }
 
 /* If have the overlay layer */
@@ -65,7 +65,7 @@ img {
     bottom: 10;
     right: 10;
     margin: auto;
-    background: black url(img/link.png) no-repeat center 20%;
+    background:#000000 url(img/link.png) no-repeat center 20%;
     background-size:50px 50px;
     opacity:0;
     filter:alpha(opacity=0);/*For IE6 - IE8*/

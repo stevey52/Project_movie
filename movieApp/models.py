@@ -89,8 +89,8 @@ class Old_is_Gold(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('detailView', kwargs={'slug': self.slug})
+    # def get_absolute_url(self):
+        # return reverse('detailView', kwargs={'slug': self.slug})
 
 #preview only first 50 characters of the body
     def snippest(self):

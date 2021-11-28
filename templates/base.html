@@ -7,15 +7,19 @@
     <title>2dayMovies Hot Picks</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <meta name="description" content="Get Hot High Quality Movies with easy torrent download in just one-click" />
 
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -25,35 +29,57 @@ integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69p
 <script src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
-  <!-- Latest compiled and minified JavaScript -->
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"  -->
-  <!-- integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
 
+
+  <!-- code to open humbugger collapsed menu -->
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
   </head>
   <body>
 
+<!-- created navigation bar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{%url 'homeView'%}">2dayMoviez</a>
+    </div>
 
-    <ul class="nav nav-pills">
-  <!-- <li role="presentation" ><a href="#"></a></li> -->
-  <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
-  <li role="presentation"><a href="{% url 'oldMovies'%}">Old is Gold</a></li>
-  <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
-  <li role="presentation"><a href="{% url 'contact_us'%}">contact</a></li>
-</ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="{% url 'upcoming'%}">Upcoming <span class="sr-only">(current)</span></a></li>
+        <!-- <li><a href="{%url 'oldMovies'%}">Old is Gold</a></li> -->
+        <li><a href="{% url 'contact_us'%}">contact</a></li>
 
-<div class="container">
+      </ul>
 
-  <!-- form for searching movies -->
-  <form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
-    {% csrf_token %}
-            <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
-            name="q">
-          <button type="submit" class="btn btn-success">Search</button>
-        </form>
-  </div>
+<!-- introducing the search form -->
+<ul class="nav navbar-nav navbar-right">
+  <li>
+      <form class="navbar-form" action="{% url 'search_results' %}" method="GET">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search" name="q" required>
+        </div>
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 
 <!-- logo with link to back home -->
-<a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>
+<a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMoviez-logos_black.png"%}" alt="Image error" style="width:8.5vw;"></a>
 
 
 
@@ -62,6 +88,7 @@ integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69p
       background-color: #fafcfc;
     }
   </style>
+
 
     {% block content%}
 

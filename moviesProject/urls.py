@@ -19,9 +19,20 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 
+from django.contrib.sitemaps.views import sitemap
+from movieApp.sitemap import Movie_articleSitemap
+
+sitemaps={
+    'movie_article':Movie_articleSitemap
+}
+
+
 urlpatterns = [
     path("",include("movieApp.urls")),
     path('admin/', admin.site.urls),
+    path(
+        'sitemap.xml',sitemap,{'sitemaps':sitemaps}, name ='django.contrib.sitemaps.views.sitemap'
+    )
 ]
 
 urlpatterns += staticfiles_urlpatterns()

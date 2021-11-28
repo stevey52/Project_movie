@@ -5,23 +5,23 @@
 <div class="container">
 
 
-<div class="Movie_article_entry">
-  <img src="{{movie_article.image.url}}" alt="No Image" style="width:17vw; float:left">
+<div class="old_is_gold_entry">
+  <img src="{{old_is_gold.image.url}}" alt="No Image" style="width:17vw; float:left">
 
   <div class="col-lg-4 col-xs-12">
-  <h1 style="text-align:center;">{{movie_article.title}}</h1>
-  <h3 align="center">{{movie_article.year}}</h3>
-  <h3 align="center">{{movie_article.genre1}} | {{movie_article.genre2}} | {{movie_article.genre3}}</h3>
+  <h1 style="text-align:center;">{{old_is_gold.title}}</h1>
+  <h3 align="center">{{old_is_gold.year}}</h3>
+  <h3 align="center">{{old_is_gold.genre1}} | {{old_is_gold.genre2}} | {{old_is_gold.genre3}}</h3>
 
-  <h4 align="center"><img src="{% static "images/IMDb.webp"%}" alt="IMDb" style="width:3vw;">{{movie_article.ratings}}</h4>
+  <h4 align="center"><img src="{% static 'images/IMDb.webp'%}" alt="" style="width:3vw;">{{old_is_gold.ratings}}</h4>
 
 
 </div>
 
-  <h2>{{movie_article.synopsis}}</h2>
+  <h2>{{old_is_gold.synopsis}}</h2>
 
-  <p>{{movie_article.snippest}}<a href="{% url 'read_more'%}">read more</a></p>
-  <p>Posted: {{movie_article.date}}</p>
+  <p>{{old_is_gold.snippest}} <a href="{% url 'read_more'%}">read more</a></p>
+  <p>Posted: {{old_is_gold.date}}</p>
 
   <h4 align="center">Download Torrent:</h4>
 
@@ -30,7 +30,11 @@
   <button class="btn-primary btn-lg" type="button" onclick="location.href='{{movie_article.download_1080p}}'" name="button">Get 1080p</button>
   <button class="btn-primary btn-lg" type="button" onclick="location.href='{{movie_article.download_2160p}}'" name="button">Get 2160p</button>
 
+
+
 </div>
+
+
 <!-- making play a trailer from page -->
 <!-- 16:9 aspect ratio -->
 <div class="col-xs-12">
@@ -39,7 +43,7 @@
 </div>
 
 <div class=" col-sm-12 embed-responsive embed-responsive-16by9">
-  <iframe width="560" height="315" src="{{movie_article.trailer}}"
+  <iframe width="560" height="315" src="{{old_is_gold.trailer}}"
   title="YouTube video player" frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen></iframe>
@@ -49,7 +53,7 @@
   <div class="col-sm-12">
     <legend>
     <h1>Director</h1>
-      <a href="{{movie_article.director_info}}">{{movie_article.director}}</a>
+      <a href="{{movie_article.director_info}}">{{old_is_gold.director}}</a>
     </legend>
 
 

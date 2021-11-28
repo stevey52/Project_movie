@@ -103,3 +103,23 @@ class OldGold(ListView):
     template_name = "oldgold.html"
     paginate_by = 12  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
+
+
+class OldGoldPage(DetailView):
+    model = Old_is_Gold
+    template_name = "oldgold_Details.html"  
+
+class SearchOldsView(ListView):
+    template_name = 'oldgold.html'
+    model = Old_is_Gold
+
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(title__icontains=query)
+
+        else:
+            object_list = self.model.objects.none()
+
+        return object_list
