@@ -47,7 +47,7 @@ class SearchResultsView(ListView):
 
         return object_list
 
-class ReadMore(ListView):
+class ReadMore(DetailView):
     model = Movie_article
     template_name = "readMore.html"
 
@@ -94,10 +94,6 @@ def sendMail(request):
 
     })
 
-
-
-
-
 class OldGold(ListView):
     model = Old_is_Gold
     template_name = "oldgold.html"
@@ -107,7 +103,7 @@ class OldGold(ListView):
 
 class OldGoldPage(DetailView):
     model = Old_is_Gold
-    template_name = "oldgold_Details.html"  
+    template_name = "oldgold_Details.html"
 
 class SearchOldsView(ListView):
     template_name = 'oldgold.html'

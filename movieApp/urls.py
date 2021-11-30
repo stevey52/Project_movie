@@ -13,7 +13,8 @@ urlpatterns = [
     path("Old_is_Gold/<str:slug>/",OldGoldPage.as_view(), name="oldgold_Detail"),
     path("Old-is-gold/",OldGold.as_view(), name='oldMovies'),
     path("contact-us/",sendMail, name='contact_us'),
-    path("about-movie/",ReadMore.as_view(),name="read_more"),
+
+    path("about_movie/<slug>/",ReadMore.as_view(),name="read_more"),
 
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),
 

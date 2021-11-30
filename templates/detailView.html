@@ -20,7 +20,7 @@
 
   <h2>{{movie_article.synopsis}}</h2>
 
-  <p>{{movie_article.snippest}}<a href="{% url 'read_more'%}">read more</a></p>
+  <p>{{movie_article.snippest}}<a href="{% url 'read_more' movie_article.slug%}">read more</a></p>
   <p>Posted: {{movie_article.date}}</p>
 
   <h4 align="center">Download Torrent:</h4>

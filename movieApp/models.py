@@ -3,12 +3,12 @@ import datetime
 from django.urls import reverse
 from django.utils.timezone import now
 
-
+#year selection for movie_article
 YEAR_CHOICES = []
 for r in range(1940, (datetime.datetime.now().year+1)):
     YEAR_CHOICES.append((r,r))
 
-
+#year selection for old is gold
 CHOOSE_YEAR = []
 for y in range(1940, (datetime.datetime.now().year+1)):
     CHOOSE_YEAR.append((y,y))
