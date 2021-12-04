@@ -16,11 +16,13 @@
       <div class="Movie_article_entry">
 
 
-        <div class="col-md-3 col-xm-12">
+        <div class="col-lg-3 col-md-4 col-xs-6"row>
         <ul id="rig">
           <li>
             <div class="rig-cell">
-                <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image" style="max-width:100%; height:auto;">
+              
+                <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image" style="max-width:inherit; height:auto;">
+              
             <span class="rig-overlay"></span>
             <span class="rig-text">
               <h4>{{Movie_article.ratings}}</h4>
@@ -29,7 +31,8 @@
               <h4>{{Movie_article.genre3}}</h4>
               <button class="btn-success btn-md" type="button" onclick="location.href='{% url 'detailView' Movie_article.slug%}'" name="button">View Movie</button>
             </span>
-            <h5 align="center" style="font-size:16px">{{Movie_article.title}}</h5>
+          </div>
+            <h5 align="center" style="font-size:12px">{{Movie_article.title}}</h5>
             <!-- <p>{{Movie_article.date}}</p> -->
             </div>
       </li>

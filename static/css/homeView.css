@@ -1,27 +1,28 @@
 .images{
-
+  
   padding-top: 20px;
   text-align: center;
+ 
 }
 
 .row{
-  float:right;
+  float:none
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
 
+#myImg{
+    border:thick rgb(8, 8, 8);
+    border-style:inset;
+}
 
 #rig {
 
-    max-width:90%;
+    max-width:100%;
     margin:0 auto; /*center aligned*/
     padding:0;
     font-size:0; /* Remember to change it back to normal font size if have captions */
     list-style:none;
-    /* background-color:#000000; */
+    background-color:inherit;
 }
 #rig li {
     display: inline-block;
@@ -35,7 +36,7 @@ img {
 
 /* The wrapper for each item */
 .rig-cell {
-    /*margin:12px;
+    margin:5px; 
     box-shadow:0 0 6px rgba(0,0,0,0.3);*/
     display:block;
     position: relative;
@@ -44,7 +45,7 @@ img {
 
 /* If have the image layer */
 .rig-img {
-    display:block;
+    display:absolute;
     width: 100%;
     height: auto;
     border:none;
@@ -82,10 +83,10 @@ img {
     box-sizing:border-box;
     position:absolute;
     left:0;
-    width:100%;
+    width: 100%;
     text-align:center;
     text-transform:capitalize;
-    font-size:18px;
+    font-size:14px;
     font-weight:bold;
     font-family: 'Oswald', sans-serif;
     font-weight:normal!important;
@@ -107,9 +108,9 @@ img {
     }
 }
 
-@media (max-width: 10px) {
+@media (max-width: 100px) {
     #rig li {
-        width:50.33%;
+        width:70.33%;
     }
 }
 
