@@ -4,24 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% block content%}
 
-
-
   <!-- <div class="container"> -->
 
     <h2><center>Download High Rated HD Movies</center></h2>
-
 
     {% for Movie_article in object_list %}
 
       <div class="Movie_article_entry">
 
-
         <div class="col-lg-3 col-md-4 col-xs-6"row>
         <ul id="rig">
           <li>
             <div class="rig-cell">
-              
-                <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image" style="max-width:inherit; height:auto;">
+                <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image">
               
             <span class="rig-overlay"></span>
             <span class="rig-text">
@@ -32,43 +27,54 @@
               <button class="btn-success btn-md" type="button" onclick="location.href='{% url 'detailView' Movie_article.slug%}'" name="button">View Movie</button>
             </span>
           </div>
+
             <h5 align="center" style="font-size:12px">{{Movie_article.title}}</h5>
             <!-- <p>{{Movie_article.date}}</p> -->
             </div>
       </li>
       </ul>
       </div>
-      </div>
       <!-- </div> -->
-
+      <!-- </div> -->
     {% endfor%}
-
-
 <legend>
-    <!-- #creating the next and previous page -->
+   
 
-      {% for movie in page_obj %}
-    <!-- {# Each "movie" is a Movie_article model object. #} -->
-    {{ movie.full_name|upper }}
-{% endfor %}
+<center>
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li>
+        <a href="?page=1">first</a>
+      </li>
 
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a id="nextPrevious" href="?page=1">&laquo; first</a>
-                <a id="nextPrevious" href="?page={{ page_obj.previous_page_number }}">| previous</a>
-            {% endif %}
+      <li>
+        {% if page_obj.has_previous%}
+        <a href="?page={{ page_obj.previous_page_number}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          {% endif %}
+        </a>
+      </li>
+      <li><a href="?page=1">1</a></li>
+      <li><a href="?page=2">2</a></li>
+      <li><a href="?page=3">3</a></li>
+      <li><a href="?page=4">4</a></li>
+      <li><a href="?page=5">5</a></li>
 
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
+      <li>
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          {% endif %}
+        </a>
+      </li>
+        <li>
+          <a href="?page={{page_obj.paginator.num_pages}}">last</a>
+        </li>
+    </ul>
+  </nav>
+</center>
 
-            {% if page_obj.has_next %}
-                <a id="nextPrevious" href="?page={{ page_obj.next_page_number }}">next</a> |
-                <a  id="nextPrevious" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
+
 </legend>
 
     <p align="right">@Mtawatechs.inc</p>

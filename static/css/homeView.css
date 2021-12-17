@@ -6,7 +6,7 @@
 }
 
 .row{
-  float:none
+  float:none;
 }
 
 
@@ -16,14 +16,14 @@
 }
 
 #rig {
-
     max-width:100%;
     margin:0 auto; /*center aligned*/
     padding:0;
     font-size:0; /* Remember to change it back to normal font size if have captions */
     list-style:none;
-    background-color:inherit;
+    background-color:#000000;
 }
+
 #rig li {
     display: inline-block;
     *display:inline;/*for IE6 - IE7*/
@@ -39,7 +39,7 @@
     margin:5px; 
     box-shadow:0 0 6px rgba(0,0,0,0.3);*/
     display:block;
-    position: relative;
+    position:relative;
     overflow:hidden;
 }
 
@@ -66,7 +66,7 @@
     bottom: 10;
     right: 10;
     margin: auto;
-    background:#000000 url(img/link.png) no-repeat center 20%;
+    background:#050505 url(img/link.png) no-repeat center 20%;
     background-size:50px 50px;
     opacity:0;
     filter:alpha(opacity=0);/*For IE6 - IE8*/
