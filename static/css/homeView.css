@@ -1,9 +1,4 @@
-.images{
-  
-  padding-top: 20px;
-  text-align: center;
- 
-}
+
 
 .row{
   float:none;
@@ -13,10 +8,11 @@
 #myImg{
     border:thick rgb(8, 8, 8);
     border-style:inset;
+
 }
 
 #rig {
-    max-width:100%;
+    width:100%;
     margin:0 auto; /*center aligned*/
     padding:0;
     font-size:0; /* Remember to change it back to normal font size if have captions */
@@ -36,7 +32,7 @@
 
 /* The wrapper for each item */
 .rig-cell {
-    margin:5px; 
+    margin:0px;
     box-shadow:0 0 6px rgba(0,0,0,0.3);*/
     display:block;
     position:relative;
@@ -46,11 +42,13 @@
 /* If have the image layer */
 .rig-img {
     display:absolute;
-    width: 100%;
-    height: auto;
-    border:none;
+    width:100%;
+    height:auto;
+    /* border:none; */
     transform:scale(1);
     transition:all 1s;
+    aspect-ratio: attr(width) / attr(height);
+    aspect-ratio: attr(width) / attr(height);
 }
 
 #rig li:hover .rig-img {

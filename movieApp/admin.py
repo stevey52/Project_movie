@@ -6,4 +6,4 @@ admin.site.register(Movie_article)
 
 admin.site.register(Upcoming)
 
-admin.site.register(Old_is_Gold)
+

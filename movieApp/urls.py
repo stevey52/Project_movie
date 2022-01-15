@@ -8,10 +8,9 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
-    path('search-oldmovie/',SearchOldsView.as_view(), name='search_oldmovie'),
 
-    path("Old_is_Gold/<str:slug>/",OldGoldPage.as_view(), name="oldgold_Detail"),
-    path("Old-is-gold/",OldGold.as_view(), name='oldMovies'),
+    path("action/",Action.as_view(), name="action_movies"),
+   
     path("contact-us/",sendMail, name='contact_us'),
 
     path("about_movie/<slug>/",ReadMore.as_view(),name="read_more"),

@@ -1,83 +1,399 @@
-{% extends 'base.html'%}
-{% load static%}
+{% extends 'base.html' %}
+{% load static %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% block content%}
 
-  <!-- <div class="container"> -->
 
-    <h2><center>Download High Rated HD Movies</center></h2>
 
-    {% for Movie_article in object_list %}
+<!--
+    - main container
+  -->
+  <div class="container">
 
-      <div class="Movie_article_entry">
+      <!-- - MAIN SECTION -->
 
-        <div class="col-lg-3 col-md-4 col-xs-6"row>
-        <ul id="rig">
-          <li>
-            <div class="rig-cell">
-                <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image">
-              
-            <span class="rig-overlay"></span>
-            <span class="rig-text">
-              <h4>{{Movie_article.ratings}}</h4>
-              <h4>{{Movie_article.genre1}}</h4>
-              <h4>{{Movie_article.genre2}}</h4>
-              <h4>{{Movie_article.genre3}}</h4>
-              <button class="btn-success btn-md" type="button" onclick="location.href='{% url 'detailView' Movie_article.slug%}'" name="button">View Movie</button>
-            </span>
+    <main>
+
+      <!--
+        - #BANNER SECTION
+      -->
+      <section class="banner">
+        <div class="banner-card">
+
+          <img src="{% static 'images/John-Wick-3.jpg' %}" class="banner-img" alt="">
+
+          <div class="card-content">
+            <div class="card-info">
+
+              <div class="genre">
+                <ion-icon name="film"></ion-icon>
+                <span>Action/Thriller</span>
+              </div>
+
+              <div class="year">
+                <ion-icon name="calendar"></ion-icon>
+                <span>2019</span>
+              </div>
+
+              <div class="duration">
+                <ion-icon name="time"></ion-icon>
+                <span>2h 11m</span>
+              </div>
+
+              <div class="quality">4K</div>
+
+            </div>
+            <h2> High Rated HD Movies</h2>
+            <h2 class="card-title">John Wick: Chapter 3 - Parabellum</h2>
+            <h3 class="card-title">Movie of the week</h3>
           </div>
 
-            <h5 align="center" style="font-size:12px">{{Movie_article.title}}</h5>
-            <!-- <p>{{Movie_article.date}}</p> -->
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #MOVIES SECTION
+      -->
+      <section class="movies">
+
+        <!--
+          - filter bar
+        -->
+        <div class="filter-bar">
+
+          <div class="filter-dropdowns">
+
+            <!-- <select name="genre" class="genre">
+              <option value="all genres">All genres</option>
+              <option value="action">Action</option>
+              <option value="adventure">Adventure</option>
+              <option value="animal">Animal</option>
+              <option value="animation">Animation</option>
+              <option value="biography">Biography</option>
+            </select>
+
+            <select name="year" class="year">
+              <option value="all years">All the years</option>
+              <option value="2022">2022</option>
+              <option value="2020-2021">2020-2021</option>
+              <option value="2010-2019">2010-2019</option>
+              <option value="2000-2009">2000-2009</option>
+              <option value="1980-1999">1980-1999</option>
+            </select> -->
+
+          </div>
+
+          <div class="filter-radios">
+
+            <input type="radio" name="grade" id="featured" checked>
+            <label for="featured">Featured</label>
+
+            <input type="radio" name="grade" id="popular">
+            <label for="popular">Popular</label>
+
+            <input type="radio" name="grade" id="newest">
+            <label for="newest">Newest </label>
+
+            <div class="checked-radio-bg"></div>
+
+          </div>
+
+        </div>
+
+
+        <!--
+          - movies grid
+        -->
+
+        <div class="movies-grid">
+          {% for Movie_article in object_list %}
+
+          <div class="movie-card">
+
+            <div class="card-head">
+              <img src="{{Movie_article.image.url}}" alt="error" class="card-img">
+
+              <div class="card-overlay">
+
+                <div class="bookmark">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star-outline"></ion-icon>
+                  <span>{{Movie_article.ratings}}</span>
+                </div>
+
+                <div class="play">
+                  <span class="genre">{{Movie_article.genre1}}</span>
+                  <span class="genre">{{Movie_article.genre2}}</span>
+                  <span class="genre">{{Movie_article.genre3}}</span>
+                  <a href="{% url 'detailView' Movie_article.slug%}"><ion-icon name="play-circle-outline"></ion-icon></a>
+                </div>
+
+              </div>
             </div>
-      </li>
-      </ul>
-      </div>
-      <!-- </div> -->
-      <!-- </div> -->
-    {% endfor%}
-<legend>
-   
 
-<center>
-  <nav aria-label="Page navigation">
-    <ul class="pagination">
-      <li>
-        <a href="?page=1">first</a>
-      </li>
+            <div class="card-body">
+              <a href="{% url 'detailView' Movie_article.slug%}">
+              <h3 class="card-title">{{Movie_article.title}}</h3>
+              </a>
 
-      <li>
-        {% if page_obj.has_previous%}
-        <a href="?page={{ page_obj.previous_page_number}}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          {% endif %}
-        </a>
-      </li>
-      <li><a href="?page=1">1</a></li>
-      <li><a href="?page=2">2</a></li>
-      <li><a href="?page=3">3</a></li>
-      <li><a href="?page=4">4</a></li>
-      <li><a href="?page=5">5</a></li>
 
-      <li>
+              <div class="card-info">
+                <span class="year">{{Movie_article.year}}</span>
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+
+          <!-- load more button -->
+        <!-- <button class="load-more">LOAD MORE</button> -->
+
+        <!-- Next and previous page -->
+        <div class="pagination">
+    <span class="step-links">
+
+        {% if page_obj.has_previous %}
+        <span class="current">
+            <button class="load-more" name="button">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</button>
+        </span>
+        <div class="btn-group">
+
+
+            <a href="?page=1">
+              <!-- &laquo; -->
+              <button class="load-more" id="first-button" type="button" name="button">First</button>
+            </a>
+
+            <a href="?page={{ page_obj.previous_page_number }}">
+              <button class="load-more" id="back-button" type="button" name="button">Back</button>
+            </a>
+        </div>
+        {% endif %}
+
+
+
         {% if page_obj.has_next %}
-        <a href="?page={{page_obj.next_page_number}}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          {% endif %}
-        </a>
-      </li>
-        <li>
-          <a href="?page={{page_obj.paginator.num_pages}}">last</a>
-        </li>
-    </ul>
-  </nav>
-</center>
+        <div class="btn-group2">
+
+          <a href="?page={{ page_obj.paginator.num_pages }}">
+            <button class="load-more" id="last-button" type="button" name="button">Last</button>
+            <!-- &raquo; -->
+          </a>
+
+            <a href="?page={{ page_obj.next_page_number }}">
+              <button class="load-more" id="next-button" type="button" name="button">next</button>
+            </a>
+
+            
+        </div>
+        {% endif %}
+    </span>
+</div>
+
+      </section>
 
 
-</legend>
 
-    <p align="right">@Mtawatechs.inc</p>
+         <!-- #CATEGORY SECTION -->
+
+      <section class="category" id="category">
+
+        <h2 class="section-heading">Category</h2>
+
+        <div class="category-grid">
+
+          <div class="category-card">
+            <img src="{% static 'images/action.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="{% url 'action_movies' %}">Action</a>
+            </div>
+            <div class="total">100</div>
+          </div>
+
+          <div class="category-card">
+            <img src="{% static 'images/comedy.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="">Comedy</a>
+            </div>
+            <div class="total">50</div>
+          </div>
+
+          <div class="category-card">
+            <img src="{% static 'images/animated.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="">Animated</a>
+            </div>
+            <div class="total">20</div>
+          </div>
+
+          <div class="category-card">
+            <img src="{% static 'images/horror.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="">Horror</a>
+            </div>
+            <div class="total">80</div>
+          </div>
+
+         
+
+        </div>
+
+      </section>
+
+      <!--
+        - #LIVE SECTION
+      -->
+      <section class="live" id="live">
+
+        <h2 class="section-heading">Live Tv Shows</h2>
+
+        <div class="live-grid">
+
+          <div class="live-card">
+
+            <div class="card-head">
+              <img src="./assets/images/planet.jpg" alt="" class="card-img">
+              <div class="live-badge">LIVE</div>
+              <div class="total-viewers">305K viewers</div>
+              <div class="play">
+                <ion-icon name="play-circle-outline"></ion-icon>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <img src="./assets/images/bbcamerica.jpg" alt="" class="avatar">
+              <h3 class="card-title">Planet Earth II <br> Season 1 - Islands</h3>
+            </div>
+
+          </div>
+
+          <div class="live-card">
+
+            <div class="card-head">
+              <img src="./assets/images/got.jpg" alt="" class="card-img">
+              <div class="live-badge">LIVE</div>
+              <div class="total-viewers">1.7M viewers</div>
+              <div class="play">
+                <ion-icon name="play-circle-outline"></ion-icon>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <img src="./assets/images/HBO-Logo-square.jpg" alt="" class="avatar">
+              <h3 class="card-title">Game of Thrones <br> Season 5 - Mother's Mercy</h3>
+            </div>
+
+          </div>
+
+          <div class="live-card">
+
+            <div class="card-head">
+              <img src="./assets/images/vikins.jpg" alt="" class="card-img">
+              <div class="live-badge">LIVE</div>
+              <div class="total-viewers">468K viewers</div>
+              <div class="play">
+                <ion-icon name="play-circle-outline"></ion-icon>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <img src="./assets/images/HBO-Logo-square.jpg" alt="" class="avatar">
+              <h3 class="card-title">Vikings <br> Season 4 - What Might Have Been</h3>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+
+       <div class="footer-brand">
+         <!-- <img src="{% static 'images/'%}" alt="" class="footer-logo"> -->
+         <p class="slogan">High Quality Rated
+           Movies & TV Shows.</p>
 
 
-{% endblock%}
+         <div class="social-link">
+
+           <a href="#">
+             <ion-icon name="logo-facebook"></ion-icon>
+           </a>
+           <a href="#">
+             <ion-icon name="logo-twitter"></ion-icon>
+           </a>
+           <a href="https://www.instagram.com/2daymoviez/">
+             <ion-icon name="logo-instagram"></ion-icon>
+           </a>
+           <a href="#">
+             <ion-icon name="logo-tiktok"></ion-icon>
+           </a>
+           <a href="#">
+             <ion-icon name="logo-youtube"></ion-icon>
+           </a>
+
+         </div>
+       </div>
+
+
+       <div class="footer-links">
+         <ul>
+
+           <h4 class="link-heading">2dayMovies</h4>
+
+           <li class="link-item"><a href="#">About us</a></li>
+           <li class="link-item"><a href="#">My profile</a></li>
+           <li class="link-item"><a href="#">Pricing plans</a></li>
+           <li class="link-item"><a href="#">Contacts</a></li>
+
+         </ul>
+
+         <ul>
+
+           <h4 class="link-heading">Browse</h4>
+
+           <li class="link-item"><a href="#">Live Tv</a></li>
+           <li class="link-item"><a href="#">Live News</a></li>
+           <li class="link-item"><a href="#">Live Sports</a></li>
+           <li class="link-item"><a href="#">Streaming Library</a></li>
+
+         </ul>
+
+         <ul>
+
+           <li class="link-item"><a href="#">TV Shows</a></li>
+           <li class="link-item"><a href="#">Movies</a></li>
+           <li class="link-item"><a href="#">Kids</a></li>
+           <li class="link-item"><a href="#">Collections</a></li>
+
+         </ul>
+
+         <ul>
+
+           <h4 class="link-heading">Help</h4>
+
+           <li class="link-item"><a href="#">Account & Billing</a></li>
+           <li class="link-item"><a href="#">Plans & Pricing</a></li>
+           <li class="link-item"><a href="#">Supported devices</a></li>
+           <li class="link-item"><a href="#">Accessibility</a></li>
+
+         </ul>
+       </div>
+
+     </div>
+    </footer>
+
+{% endblock %}

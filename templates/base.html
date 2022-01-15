@@ -1,100 +1,154 @@
+
 <!DOCTYPE html>
 {% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <!-- <meta charset="utf-8"> -->
-    <meta charset="UTF-8" />
-    <title>2dayMovies Hot Picks</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<html lang="en">
 
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="icon" href="{% static 'images/icon.png'%}" type="image/png"> -->
+  <title>2dayMovies Hot picks</title>
 
-        <meta name="description" content="Get Hot High Quality Movies with easy torrent download in just one-click" />
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/media_query.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
+  <!-- <link rel="stylesheet" href="{% static 'css/variable.css' %}"> -->
 
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+ 
+  <!--
+    - google font link
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="{% static 'css/homeView.css'%}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<script src="{% static 'java/home.js'%}"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
+<body>
+  
+  <!--
+    - main container
+  -->
+  <div class="container">
 
 
-  <!-- code to open humbugger collapsed menu -->
-  <!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  </head>
-  <body>
+      <!-- - #HEADER SECTION -->
 
-<!-- created navigation bar -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{%url 'homeView'%}">2dayMoviez</a>
-    </div>
+    <header class="">
+      <div class="navbar">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="{% url 'upcoming'%}">Upcoming <span class="sr-only">(current)</span></a></li>
-        <!-- <li><a href="{%url 'oldMovies'%}">Old is Gold</a></li> -->
-        <li><a href="{% url 'contact_us'%}">contact</a></li>
 
-      </ul>
+          <!-- - menu button for small screen -->
 
-<!-- introducing the search form -->
-<ul class="nav navbar-nav navbar-right">
-  <li>
-      <form class="navbar-form" action="{% url 'search_results' %}" method="GET">
-        {% csrf_token %}
-        <div class="form-group">
-          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search" name="q" required>
+        <button class="navbar-menu-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+
+
+        <a href="{%url 'homeView'%}" class="navbar-brand"><strong>2dayMovies</strong>
+          <!-- <img src="{% static 'images/logo.png'%}" alt=""> -->
+        </a>
+
+
+         <!-- navbar navigation -->
+
+        <nav class="">
+          <ul class="navbar-nav">
+
+            <li> <a href="{%url 'homeView'%}" class="navbar-link">Home</a> </li>
+            <li> <a href="#category" class="navbar-link">Category</a> </li>
+            <li> <a href="#live" class="navbar-link  indicator">LIVE</a> </li>
+            <li> <a href="{% url 'upcoming'%}" class="navbar-link">Upcoming</a> </li>
+
+          </ul>
+        </nav>
+
+
+          <!-- search and sign-in -->
+
+
+        <div class="navbar-actions">
+
+          <form action="{% url 'search_results' %}" class="navbar-form" method="GET">
+            {% csrf_token %}
+            <input type="text" value='{{ request.GET.q}}' name="q" placeholder="I'm looking for..." class="navbar-form-search" required>
+
+            <button type="submit" class="navbar-form-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
+            <button class="navbar-form-close">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
+          </form>
+
+
+            <!-- - search button for small screen -->
+
+
+          <button class="navbar-search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+          <a href="#" class="navbar-signin">
+            <span>Sign in</span>
+            <ion-icon name="log-in-outline"></ion-icon>
+          </a>
+
         </div>
-        <button type="submit" class="btn btn-success">Search</button>
-      </form>
-        </li>
-      </ul>
-    </div> <!-- /.navbar-collapse -->
-  </div>   <!-- /.container-fluid -->
-</nav>
 
-
-<!-- logo with link to back home -->
-<!-- <a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMoviez-logos_black.png"%}" alt="Image error" style="width:8.5vw;"></a> -->
-
-  <style media="screen">
-    body{
-      background-color: #fafcfc;
-    }
-  </style>
+      </div>
+    </header>
 
 
     {% block content%}
 
 
-    {%endblock%}
+    {% endblock %}
 
 
-<!-- <footer>Mtawa Technologies.inc (c) 2021.</footer> -->
-  </body>
+
+
+    <!--
+      - FOOTER SECTION
+    -->
+    <footer>
+
+  </div>
+      <div class="footer-copyright">
+
+        <div class="copyright">
+          <p>copyright 2021 @Mtawatechs.inc</p>
+        </div>
+
+        <div class="wrapper">
+          
+          <a href=""><strong>Support Email: 2daymoviez@gmail.com</strong></a>
+          <!-- <a href="#">Terms and conditions</a> -->
+        </div>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="{% static 'java/main.js' %}"></script>
+
+
+    <!-- - ionicon link -->
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
 
 </html>

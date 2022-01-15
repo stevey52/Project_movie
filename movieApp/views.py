@@ -1,3 +1,4 @@
+from io import DEFAULT_BUFFER_SIZE
 from django.shortcuts import render
 from django.views.generic import *
 from django.core.paginator import Paginator #importing module for breaking pages
@@ -8,6 +9,7 @@ from.forms import EmailForm
 from django.conf import settings
 import os
 import environ
+import pickle
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
 
@@ -15,7 +17,7 @@ import environ
 class HomePage(ListView):
     model = Movie_article
     template_name = "homeView.html"
-    paginate_by = 12  #divide pages contents(each page to have 12 contents)
+    paginate_by = 14  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
 
@@ -27,6 +29,7 @@ class UpcomingMovies(ListView):
     model = Upcoming
     template_name = "upcoming.html"
     ordering = ['-date']
+    paginate_by = 14
 
 class Upcoming_details(DetailView):
     model = Upcoming
@@ -95,28 +98,19 @@ def sendMail(request):
 
     })
 
-class OldGold(ListView):
-    model = Old_is_Gold
-    template_name = "oldgold.html"
-    paginate_by = 12  #divide pages contents(each page to have 12 contents)
-    ordering = ['-date']  #odering posts by date, last posted to be new post
 
 
-class OldGoldPage(DetailView):
-    model = Old_is_Gold
-    template_name = "oldgold_Details.html"
-
-class SearchOldsView(ListView):
-    template_name = 'oldgold.html'
-    model = Old_is_Gold
+class Action(ListView):
+    model = Movie_article
+    template_name = "action.html"
 
 
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            object_list = self.model.objects.filter(title__icontains=query)
+    def category_list(request):
+        categories = Movie_article.objects.filter(category="action") # this will get all categories, you can do some filtering if you need (e.g. excluding categories without posts in it)
 
-        else:
-            object_list = self.model.objects.none()
 
-        return object_list
+
+        return render (request, 'action.html', {'categories': categories}) # blog/category_list.html should be the template that categories are listed.
+
+
+
