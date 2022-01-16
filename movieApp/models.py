@@ -27,13 +27,21 @@ class Movie_article(models.Model):
     slug = models.SlugField(null=False, unique=True)
     synopsis = models.CharField(max_length=50,default="Synopsis")
     ratings = models.CharField(max_length=50,null=True)
+
     genre1 = models.CharField(max_length=50,null=True)
     genre2 = models.CharField(max_length=50,null=True)
     genre3 = models.CharField(max_length=50,default="...")
+
     year = models.IntegerField(('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+
     download_720p = models.CharField(max_length=200,null=True)
     download_1080p = models.CharField(max_length=200,null=True)
     download_2160p = models.CharField(max_length=200,null=True)
+
+    size_720p = models.CharField(max_length=20,default='720p')
+    size_1080p = models.CharField(max_length=20,default='1080p')
+    size_2160p = models.CharField(max_length=20,default='2160p')
+
     trailer = models.CharField(max_length=200,null=True)
     director = models.CharField(max_length=50,default="...")
     director_info = models.CharField(max_length=500,null=True)
@@ -43,7 +51,6 @@ class Movie_article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(default='logos.jpeg',blank=True)
     #add author
-
 
 
     def __str__(self):

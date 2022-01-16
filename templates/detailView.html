@@ -6,94 +6,120 @@
     <title>2dayMovies Hot Picks</title>
 
     <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
+    <link rel="stylesheet" href="{% static 'css/detailView.css'%}">
+    <script src="{% static 'java/detalView.js'%}"></script>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
   <body>
+
     <style media="screen">
+
       body{
         background-color: #010b13;
       }
       nav{
         background-color: #010b13;
       }
+ 
     </style>
 
-    <div class="container">
+<div class="container">
 
-
-      <nav class="navbar navbar">
+  <!-- Navbar section -->
+  <section>
+      <nav class="navbar navbar-light">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'homeView'%}">Home</a>
-          </div>
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'homeView'%}"><strong>2dayMovies</strong></a>
+            </li>
+          </ul>
         </div>
       </nav>
+  </section>
+
+<!-- the main section -->
+<main>
+  <section style="padding-top: 50px;">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <img src="{{movie_article.image.url}}" alt="No Image" style="width:20vw; float:left">
+            </div>
+
+            <div class="col">
+              <h1 style="text-align:center;">{{movie_article.title}}</h1>
+              <h3 align="center">{{movie_article.year}}</h3>
+              <h3 align="center">{{movie_article.genre1}} | {{movie_article.genre2}} | {{movie_article.genre3}}</h3>
+              <h4 align="center"><img id="imdb" src="{% static "images/IMDb.webp"%}" alt="IMDb">{{movie_article.ratings}}</h4>
+            </div>
+
+            <div class="col">
+              <h5>{{movie_article.synopsis}}</h5>
+              <p>{{movie_article.snippest}}<a href="{% url 'read_more' movie_article.slug%}">read more</a></p>
+              <p>Posted: {{movie_article.date}}</p>
+
+              <h4>Download Torrent:</h4>
+
+              <!-- 720p button with tooltip  -->
+              <button type="button" class="btn btn-outline-primary btn-sm" 
+              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_720p}}"
+              onclick="location.href='{{movie_article.download_720p}}'" name="button">
+              download:720p</button>
+
+              <!-- 1080p button with tooltip  -->
+              <button type="button" class="btn btn-outline-secondary btn-sm" 
+              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_1080p}}" 
+              onclick="location.href='{{movie_article.download_1080p}}'" name="button">
+              download:1080p</button>
+
+              <!-- 2160p button with tooltip  -->
+              <button type="button" class="btn btn-outline-success btn-sm" 
+              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_2160p}}"
+              onclick="location.href='{{movie_article.download_2160p}}'" name="button">
+              download:2160p</button>
+
+            </div>
+
+          </div>
 
 
-  
-
-
-     
-
-    <div class="col-sm-12">
-    <div class="Movie_article_entry">
-      <img src="{{movie_article.image.url}}" alt="No Image" style="width:17vw; float:left">
-
-      <div class="col-lg-4">
-      <h1 style="text-align:center;">{{movie_article.title}}</h1>
-      <h3 align="center">{{movie_article.year}}</h3>
-      <h3 align="center">{{movie_article.genre1}} | {{movie_article.genre2}} | {{movie_article.genre3}}</h3>
-
-      <h4 align="center"><img src="{% static "images/IMDb.webp"%}" alt="IMDb" style="width:4vw;">{{movie_article.ratings}}</h4>
-
-
-    </div>
-
-      <h5>{{movie_article.synopsis}}</h5>
-
-      <p>{{movie_article.snippest}}<a href="{% url 'read_more' movie_article.slug%}">read more</a></p>
-      <p>Posted: {{movie_article.date}}</p>
-
-      <h4>Download Torrent:</h4>
-      <button class="btn-success btn-lg" type="button" onclick="location.href='{{movie_article.download_720p}}'" name="button">720p</button>
-      <button class="btn-primary btn-lg" type="button" onclick="location.href='{{movie_article.download_1080p}}'" name="button">1080p</button>
-      <button class="btn-primary btn-lg" type="button" onclick="location.href='{{movie_article.download_2160p}}'" name="button">2160p</button>
-
-    </div>
-    </div>
-    <!-- making play a trailer from page -->
-    <!-- 16:9 aspect ratio -->
-    <div class="col-xs-12">
-        <h2>Watch Trailer</h2>
-
-    </div>
-
-    <div class=" col-sm-12 embed-responsive embed-responsive-16by9">
-      <iframe width="560" height="315" src="{{movie_article.trailer}}"
-      title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-      <!-- <iframe class="embed-responsive-item" src="{{movie_article.trailer}}"></iframe> -->
+      <!-- making play a trailer from page -->
+      <!-- 16:9 aspect ratio -->
+      <div class="row">
+        <div class="col">
+          <h2 style="padding-top: 50px;">Watch Trailer</h2>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class=" col embed-responsive embed-responsive-16by9">
+          <iframe width="100%" height="600" src="{{movie_article.trailer}}"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        </div>
       </div>
 
-      <div class="col-sm-12">
-        <legend>
-        <h1>Director</h1>
-          <a href="{{movie_article.director_info}}">{{movie_article.director}}</a>
-        </legend>
-
-
-
-
+        <div class="col-sm-12">
+          <legend>
+          <h1>Director</h1>
+            <a href="{{movie_article.director_info}}">{{movie_article.director}}</a>
+          </legend>
+      </div>
     </div>
+  </section>
+</main>
+</div> 
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
   </body>
 </html>
