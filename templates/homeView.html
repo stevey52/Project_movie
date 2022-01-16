@@ -223,7 +223,7 @@
           <div class="category-card">
             <img src="{% static 'images/comedy.jpg'%}" alt="" class="card-img">
             <div class="name">
-              <a href="">Comedy</a>
+              <a href="{% url 'comedy_movies'%}">Comedy&Drama</a>
             </div>
             <div class="total">50</div>
           </div>
@@ -231,7 +231,7 @@
           <div class="category-card">
             <img src="{% static 'images/animated.jpg'%}" alt="" class="card-img">
             <div class="name">
-              <a href="">Animated</a>
+              <a href="{% url 'animated_movies'%}">Animated</a>
             </div>
             <div class="total">20</div>
           </div>
@@ -239,10 +239,12 @@
           <div class="category-card">
             <img src="{% static 'images/horror.jpg'%}" alt="" class="card-img">
             <div class="name">
-              <a href="">Horror</a>
+              <a href="{% url 'horror_movies'%}">Horror</a>
             </div>
             <div class="total">80</div>
           </div>
+          
+      
 
          
 

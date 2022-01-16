@@ -18,6 +18,7 @@ category_choices = (
     ('comedy', 'Comedy'),
     ('horror', 'Horror'),
     ('animated', 'Animation'),
+    ('drama', 'Drama'),
 )
 
 # Create your models here.
@@ -37,6 +38,7 @@ class Movie_article(models.Model):
     director = models.CharField(max_length=50,default="...")
     director_info = models.CharField(max_length=500,null=True)
     category = models.CharField(max_length=200, default="horror", choices=category_choices)
+
     body = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(default='logos.jpeg',blank=True)

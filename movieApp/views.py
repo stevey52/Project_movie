@@ -1,4 +1,5 @@
-from io import DEFAULT_BUFFER_SIZE
+
+from unicodedata import category
 from django.shortcuts import render
 from django.views.generic import *
 from django.core.paginator import Paginator #importing module for breaking pages
@@ -9,7 +10,6 @@ from.forms import EmailForm
 from django.conf import settings
 import os
 import environ
-import pickle
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
 
@@ -99,18 +99,59 @@ def sendMail(request):
     })
 
 
-
+#Views for action movies category
 class Action(ListView):
     model = Movie_article
-    template_name = "action.html"
+    template_name = "homeView.html"
 
 
-    def category_list(request):
-        categories = Movie_article.objects.filter(category="action") # this will get all categories, you can do some filtering if you need (e.g. excluding categories without posts in it)
+    def get_queryset(self):
+        
+        object_list = self.model.objects.filter(category="action")
+            
+
+        return object_list
+
+
+#Views for comedy movies category
+class Comedy(ListView):
+    model = Movie_article
+    template_name = "homeView.html"
+
+
+    def get_queryset(self):
+        
+        object_list = self.model.objects.filter(category__in=["comedy","drama"])
+
+
+        return object_list
 
 
 
-        return render (request, 'action.html', {'categories': categories}) # blog/category_list.html should be the template that categories are listed.
+
+#Views for animated movies category
+class Animation(ListView):
+    model = Movie_article
+    template_name = "homeView.html"
+
+
+    def get_queryset(self):
+        
+        object_list = self.model.objects.filter(category="animated")
+
+        return object_list
 
 
 
+
+#Views for Horror movies category
+class Horror(ListView):
+    model = Movie_article
+    template_name = "homeView.html"
+
+
+    def get_queryset(self):
+        
+        object_list = self.model.objects.filter(category="horror")
+
+        return object_list

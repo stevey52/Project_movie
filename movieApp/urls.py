@@ -10,6 +10,12 @@ urlpatterns = [
     ),
 
     path("action/",Action.as_view(), name="action_movies"),
+
+    path("comedy/",Comedy.as_view(), name="comedy_movies"),
+
+    path("animated/",Animation.as_view(), name="animated_movies"),
+
+    path("horror/",Horror.as_view(), name="horror_movies"),
    
     path("contact-us/",sendMail, name='contact_us'),
 
