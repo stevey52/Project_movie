@@ -20,6 +20,11 @@ class HomePage(ListView):
     paginate_by = 14  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)    
+        context['TvSeries'] = Tv_series.objects.all()
+        return context
+
 
 class DetailsPage(DetailView):
     model = Movie_article
@@ -155,3 +160,22 @@ class Horror(ListView):
         object_list = self.model.objects.filter(category="horror")
 
         return object_list
+
+
+##Series views
+class Series_page(ListView):
+    model = Series
+    template_name = "series.html"
+
+
+# views for sereies details and download page
+class SeriesDetails(DetailView):
+    model = Series
+    template_name = "seriesDetails.html"
+
+
+# #views for tv_series section at home page
+# class TvSeries(ListView):
+#     model = Tv_series
+#     template_name = "homeView.html"
+

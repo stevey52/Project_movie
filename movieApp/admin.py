@@ -6,4 +6,8 @@ admin.site.register(Movie_article)
 
 admin.site.register(Upcoming)
 
+admin.site.register(Series)
+
+admin.site.register(Tv_series)
+
 

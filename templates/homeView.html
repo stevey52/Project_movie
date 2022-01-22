@@ -8,19 +8,17 @@
 <!--
     - main container
   -->
-  <div class="container">
+  <!-- <div class="container"> -->
 
       <!-- - MAIN SECTION -->
 
     <main>
 
-      <!--
-        - #BANNER SECTION
-      -->
+      <!-- #BANNER SECTION -->
       <section class="banner">
         <div class="banner-card">
 
-          <img src="{% static 'images/John-Wick-3.jpg' %}" class="banner-img" alt="">
+          <img src="{% static 'images/vikins.jpg' %}" class="banner-img" alt="">
 
           <div class="card-content">
             <div class="card-info">
@@ -95,8 +93,8 @@
             <input type="radio" name="grade" id="popular">
             <label for="popular">Popular</label>
 
-            <input type="radio" name="grade" id="newest">
-            <label for="newest">Newest </label>
+            <input type="radio" name="grade" id="series">
+            <label for="series">TV Series</label>
 
             <div class="checked-radio-bg"></div>
 
@@ -105,9 +103,7 @@
         </div>
 
 
-        <!--
-          - movies grid
-        -->
+        <!-- movies grid -->
 
         <div class="movies-grid">
           {% for Movie_article in object_list %}
@@ -142,7 +138,6 @@
               <a href="{% url 'detailView' Movie_article.slug%}">
               <h3 class="card-title">{{Movie_article.title}}</h3>
               </a>
-
 
               <div class="card-info">
                 <span class="year">{{Movie_article.year}}</span>
@@ -180,8 +175,6 @@
         </div>
         {% endif %}
 
-
-
         {% if page_obj.has_next %}
         <div class="btn-group2">
 
@@ -199,7 +192,6 @@
         {% endif %}
     </span>
 </div>
-
       </section>
 
 
@@ -244,12 +236,7 @@
             <div class="total">80</div>
           </div>
           
-      
-
-         
-
         </div>
-
       </section>
 
       <!--
@@ -257,14 +244,15 @@
       -->
       <section class="live" id="live">
 
-        <h2 class="section-heading">Live Tv Shows</h2>
+        <h2 class="section-heading"> Tv Series</h2>
 
         <div class="live-grid">
-
+          
+          {% for shows in TvSeries %}
           <div class="live-card">
 
             <div class="card-head">
-              <img src="./assets/images/planet.jpg" alt="" class="card-img">
+              <img src="{{shows.image.url}}" alt="" class="card-img">
               <div class="live-badge">LIVE</div>
               <div class="total-viewers">305K viewers</div>
               <div class="play">
@@ -273,49 +261,18 @@
             </div>
 
             <div class="card-body">
-              <img src="./assets/images/bbcamerica.jpg" alt="" class="avatar">
-              <h3 class="card-title">Planet Earth II <br> Season 1 - Islands</h3>
+              <img src="{% static 'images/prime-video_vs_netflix.jpeg'%}" alt="" class="avatar">
+              <h3 class="card-title">{{shows.title}}</h3>
             </div>
 
           </div>
-
-          <div class="live-card">
-
-            <div class="card-head">
-              <img src="./assets/images/got.jpg" alt="" class="card-img">
-              <div class="live-badge">LIVE</div>
-              <div class="total-viewers">1.7M viewers</div>
-              <div class="play">
-                <ion-icon name="play-circle-outline"></ion-icon>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <img src="./assets/images/HBO-Logo-square.jpg" alt="" class="avatar">
-              <h3 class="card-title">Game of Thrones <br> Season 5 - Mother's Mercy</h3>
-            </div>
-
-          </div>
-
-          <div class="live-card">
-
-            <div class="card-head">
-              <img src="./assets/images/vikins.jpg" alt="" class="card-img">
-              <div class="live-badge">LIVE</div>
-              <div class="total-viewers">468K viewers</div>
-              <div class="play">
-                <ion-icon name="play-circle-outline"></ion-icon>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <img src="./assets/images/HBO-Logo-square.jpg" alt="" class="avatar">
-              <h3 class="card-title">Vikings <br> Season 4 - What Might Have Been</h3>
-            </div>
-
-          </div>
-
+          {% endfor %}
         </div>
+       
+
+
+         <!-- load more button -->
+        <a style="padding-top: 50px;" href="{% url 'tv_series'%}"><button class="load-more">LOAD TV SERIES</button></a>
 
       </section>
     </main>

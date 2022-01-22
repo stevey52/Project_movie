@@ -9,6 +9,10 @@ urlpatterns = [
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
 
+    path("Series/<slug>/",SeriesDetails.as_view(), name="series_View"),
+
+    path("series/",Series_page.as_view(), name="tv_series"),
+    
     path("action/",Action.as_view(), name="action_movies"),
 
     path("comedy/",Comedy.as_view(), name="comedy_movies"),

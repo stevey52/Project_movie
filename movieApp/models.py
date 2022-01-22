@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 import datetime
 from django.urls import reverse
@@ -65,7 +66,7 @@ class Movie_article(models.Model):
 
 
 
-
+#upcoming movies model
 class Upcoming(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(null=False, unique=True, default="upcoming")
@@ -78,5 +79,36 @@ class Upcoming(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     release_Date = models.DateField(u'Release Date') #calendar for date picker
     body = models.TextField(null=True)
+
+
+    def __str__(self):
+        return self.title
+
+
+
+#series models
+class Series(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(null=False, unique=True)
+    episode = models.IntegerField(blank=True, null=True)
+    ratings = models.FloatField(blank=True, null=True)
+    genre = models.CharField(max_length=200, blank=True)
+    download = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(blank=True)
+
+
+
+    def __str__(self):
+        return self.title
+
+
+#Tv series section model
+class Tv_series(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(blank=True)
+
+    def __str__(self):
+        return self.title
+
 
 

@@ -345,10 +345,13 @@ input ~ .checked-radio-bg {
   --left:  90px;
 }
 
-#newest:checked ~ .checked-radio-bg {
+
+#series:checked ~ .checked-radio-bg {
   --width:  81px;
   --left:  163px;
 }
+
+
 
 
 /**
@@ -754,7 +757,7 @@ ul .link-item:not(:last-child) { margin-bottom: 10px; }
 .footer-copyright {
   display:         flex;
   justify-content: space-between;
-  align-items:     center;
+  align-items:     right;
   padding-top: 40px;
 }
 
@@ -763,6 +766,6 @@ ul .link-item:not(:last-child) { margin-bottom: 10px; }
 
 .wrapper a:hover { color: var(--light-azure); }
 
-.wrapper { display: flex; }
+.wrapper { display: flex; padding-bottom: 100px;}
 
 .wrapper a:not(:last-child) { margin-right: 30px; }

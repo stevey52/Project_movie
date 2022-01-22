@@ -35,6 +35,9 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="{% url 'homeView'%}"><strong>2dayMovies</strong></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'tv_series'%}"><strong>TV Series</strong></a>
+              </li>
           </ul>
         </div>
       </nav>
@@ -46,42 +49,32 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <img src="{{movie_article.image.url}}" alt="No Image" style="width:20vw; float:left">
+              <img src="{{series.image.url}}" alt="No Image" style="width:50vw; float:left">
             </div>
 
             <div class="col">
-              <h1 style="text-align:center;">{{movie_article.title}}</h1>
-              <h3 align="center">{{movie_article.year}}</h3>
-              <h3 align="center">{{movie_article.genre1}} | {{movie_article.genre2}} | {{movie_article.genre3}}</h3>
-              <h4 align="center"><img id="imdb" src="{% static "images/IMDb.webp"%}" alt="IMDb">{{movie_article.ratings}}</h4>
+              <h1 style="text-align:center;">{{series.title}}</h1>
+              <h3 align="center">Genre:{{series.genre}}</h3>
+              <h4 align="center"><img id="imdb" src="{% static "images/IMDb.webp"%}" alt="IMDb">{{series.ratings}}</h4>
             </div>
 
-            <div class="col">
-              <h5>{{movie_article.synopsis}}</h5>
-              <p>{{movie_article.snippest}}<a href="{% url 'read_more' movie_article.slug%}">read more</a></p>
-              <p>Posted: {{movie_article.date}}</p>
 
-              <h4>Download Torrent:</h4>
+              
 
-              <!-- 720p button with tooltip  -->
-              <button type="button" class="btn btn-outline-primary btn-sm" 
-              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_720p}}"
-              onclick="location.href='{{movie_article.download_720p}}'" name="button">
-              download:720p</button>
+              
 
-              <!-- 1080p button with tooltip  -->
+              <!-- 1080p button with tooltip 
               <button type="button" class="btn btn-outline-secondary btn-sm" 
               data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_1080p}}" 
               onclick="location.href='{{movie_article.download_1080p}}'" name="button">
-              download:1080p</button>
+              download:1080p</button> -->
 
               <!-- 2160p button with tooltip  -->
-              <button type="button" class="btn btn-outline-success btn-sm" 
+              <!-- <button type="button" class="btn btn-outline-success btn-sm" 
               data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_2160p}}"
               onclick="location.href='{{movie_article.download_2160p}}'" name="button">
-              download:2160p</button>
+              download:2160p</button> -->
 
-            </div>
 
           </div>
 
@@ -90,23 +83,27 @@
       <!-- 16:9 aspect ratio -->
       <div class="row">
         <div class="col">
-          <h2 style="padding-top: 50px;">Watch Trailer</h2>
+            <h4 style="padding-top: 50px;">Magnet Link:</h4>
+
+              <!-- 720p button with tooltip  -->
+              <button type="button" class="btn btn-outline-success btn-lg" 
+              data-bs-toggle="tooltip" data-bs-placement="top" title=""
+              onclick="location.href='{{series.download}}'" name="button"><ion-icon name="magnet"></ion-icon>
+              Download this Torrent</button>
+          <!-- <h2 >Watch Trailer</h2> -->
         </div>
       </div>
     
-      <div class="row">
+      <!-- <div class="row">
         <div class=" col embed-responsive embed-responsive-16by9">
           <iframe width="100%" height="600" src="{{movie_article.trailer}}"
           title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
         </div>
-      </div>
+      </div> -->
 
-        <div class="col-sm-12">
-          <legend>
-          <h1>Director</h1>
-            <a href="{{movie_article.director_info}}">{{movie_article.director}}</a>
+        
           </legend>
       </div>
     </div>
@@ -116,6 +113,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+    <!-- - ionicon link -->
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   </body>
 </html>

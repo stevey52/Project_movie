@@ -20,29 +20,23 @@
   <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
   <!-- <link rel="stylesheet" href="{% static 'css/variable.css' %}"> -->
 
- 
-  <!--
-    - google font link
-  -->
+
+  <!-- google font link -->
   <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
 </head>
 
 <body>
   
-  <!--
-    - main container
-  -->
-  <div class="container">
+  <!-- main container -->
 
+  <div class="container">
 
       <!-- - #HEADER SECTION -->
 
     <header class="">
       <div class="navbar">
 
-
           <!-- - menu button for small screen -->
-
         <button class="navbar-menu-btn">
           <span class="one"></span>
           <span class="two"></span>
@@ -59,12 +53,10 @@
 
         <nav class="">
           <ul class="navbar-nav">
-
             <li> <a href="{%url 'homeView'%}" class="navbar-link">Home</a> </li>
             <li> <a href="#category" class="navbar-link">Category</a> </li>
-            <li> <a href="#live" class="navbar-link  indicator">LIVE</a> </li>
+            <li> <a href="#live" class="navbar-link  indicator">TV Series</a> </li>
             <li> <a href="{% url 'upcoming'%}" class="navbar-link">Upcoming</a> </li>
-
           </ul>
         </nav>
 
@@ -103,6 +95,7 @@
         </div>
 
       </div>
+      
     </header>
 
 
@@ -117,22 +110,25 @@
     <!--
       - FOOTER SECTION
     -->
-    <footer>
+<footer>
 
   </div>
+
+ 
       <div class="footer-copyright">
 
-        <div class="copyright">
-          <p>copyright 2021 @Mtawatechs.inc</p>
-        </div>
-
+        <div class="container">
         <div class="wrapper">
-          
           <a href=""><strong>Support Email: 2daymoviez@gmail.com</strong></a>
           <!-- <a href="#">Terms and conditions</a> -->
         </div>
-
       </div>
+
+        <div class="copyright">
+          <p align="left">copyright 2021 @Mtawatechs.inc</p>
+        </div>
+      
+  </div>
 
     </footer>
 
