@@ -27,6 +27,8 @@ urlpatterns = [
 
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),
 
+    path('search-series/',SeriesView.as_view(), name='search_seriess'),
+
     path("Upcoming/<slug>/",Upcoming_details.as_view(), name="upcomingDetail"),
     path("Upcoming/",UpcomingMovies.as_view(), name="upcoming"),
     path("Movie_article/<slug>/",DetailsPage.as_view(), name="detailView"),

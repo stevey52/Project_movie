@@ -10,6 +10,7 @@ from.forms import EmailForm
 from django.conf import settings
 import os
 import environ
+from django.db.models import Count
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
 
@@ -19,6 +20,7 @@ class HomePage(ListView):
     template_name = "homeView.html"
     paginate_by = 14  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    
@@ -45,7 +47,6 @@ class SearchResultsView(ListView):
     template_name = 'homeView.html'
     model = Movie_article
 
-
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
@@ -55,6 +56,26 @@ class SearchResultsView(ListView):
             object_list = self.model.objects.none()
 
         return object_list
+
+
+
+#search functionality buy quering the database from user inputs
+class SeriesView(ListView):
+    template_name = 'series.html'
+    model = Series
+
+    def get_queryset(self):
+        query1 = self.request.GET.get('q')
+        if query1:
+            object_list = self.model.objects.filter(title__icontains=query1)
+
+        else:
+            object_list = self.model.objects.none()
+
+        return object_list
+
+
+
 
 class ReadMore(DetailView):
     model = Movie_article
@@ -113,9 +134,10 @@ class Action(ListView):
     def get_queryset(self):
         
         object_list = self.model.objects.filter(category="action")
+        q = Movie_article.objects.annotate(Count('category'))
             
 
-        return object_list
+        return object_list,q
 
 
 #Views for comedy movies category
@@ -174,8 +196,4 @@ class SeriesDetails(DetailView):
     template_name = "seriesDetails.html"
 
 
-# #views for tv_series section at home page
-# class TvSeries(ListView):
-#     model = Tv_series
-#     template_name = "homeView.html"
 

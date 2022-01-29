@@ -239,9 +239,8 @@
         </div>
       </section>
 
-      <!--
-        - #LIVE SECTION
-      -->
+
+      <!-- #LIVE SECTION -->
       <section class="live" id="live">
 
         <h2 class="section-heading"> Tv Series</h2>
@@ -253,15 +252,15 @@
 
             <div class="card-head">
               <img src="{{shows.image.url}}" alt="" class="card-img">
-              <div class="live-badge">LIVE</div>
-              <div class="total-viewers">305K viewers</div>
+              <div class="live-badge">IMDB {{shows.ratings}}</div>
+              <div class="total-viewers">{{shows.production}}</div>
               <div class="play">
                 <ion-icon name="play-circle-outline"></ion-icon>
               </div>
             </div>
 
             <div class="card-body">
-              <img src="{% static 'images/prime-video_vs_netflix.jpeg'%}" alt="" class="avatar">
+              <img src="{{shows.image2.url}}" alt="" class="avatar">
               <h3 class="card-title">{{shows.title}}</h3>
             </div>
 

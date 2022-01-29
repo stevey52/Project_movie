@@ -14,6 +14,7 @@ CHOOSE_YEAR = []
 for y in range(1940, (datetime.datetime.now().year+1)):
     CHOOSE_YEAR.append((y,y))
 
+
 category_choices = (
     ('action','Action'),
     ('comedy', 'Comedy'),
@@ -21,6 +22,7 @@ category_choices = (
     ('animated', 'Animation'),
     ('drama', 'Drama'),
 )
+
 
 # Create your models here.
 class Movie_article(models.Model):
@@ -46,6 +48,7 @@ class Movie_article(models.Model):
     trailer = models.CharField(max_length=200,null=True)
     director = models.CharField(max_length=50,default="...")
     director_info = models.CharField(max_length=500,null=True)
+
     category = models.CharField(max_length=200, default="horror", choices=category_choices)
 
     body = models.TextField(null=True)
@@ -94,6 +97,7 @@ class Series(models.Model):
     ratings = models.FloatField(blank=True, null=True)
     genre = models.CharField(max_length=200, blank=True)
     download = models.CharField(max_length=200, blank=True)
+    filesize = models.CharField(blank=True,max_length=200)
     image = models.ImageField(blank=True)
 
 
@@ -102,10 +106,13 @@ class Series(models.Model):
         return self.title
 
 
-#Tv series section model
+#The model ofTv series section displayed at homepage
 class Tv_series(models.Model):
     title = models.CharField(max_length=200)
+    ratings = models.FloatField(blank=True, null=True)
+    production =models.CharField(max_length=200,blank=True)
     image = models.ImageField(blank=True)
+    image2 = models.ImageField(blank=True)
 
     def __str__(self):
         return self.title
