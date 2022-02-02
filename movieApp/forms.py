@@ -1,5 +1,7 @@
 from django import forms
 
+from movieApp.models import Movie_article, Series
+
 class EmailForm(forms.Form):
     sender = forms.CharField(max_length=20,label='Name')
     sender_email = forms.EmailField()
@@ -14,3 +16,5 @@ class EmailForm(forms.Form):
 
     message.widget.attrs.update(
         {'class':'form-control','placeholder':'Type your Message:', 'required':'required'})
+
+
