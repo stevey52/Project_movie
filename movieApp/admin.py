@@ -10,4 +10,6 @@ admin.site.register(Series)
 
 admin.site.register(Tv_series)
 
+admin.site.register(Sports_feeds)
+
 

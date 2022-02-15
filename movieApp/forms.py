@@ -1,3 +1,4 @@
+from cProfile import label
 from django import forms
 
 from movieApp.models import Movie_article, Series
@@ -16,5 +17,10 @@ class EmailForm(forms.Form):
 
     message.widget.attrs.update(
         {'class':'form-control','placeholder':'Type your Message:', 'required':'required'})
+
+
+
+class SearchField(forms.Form):
+    movie_search = forms.CharField(max_length=50, label="Search")
 
 

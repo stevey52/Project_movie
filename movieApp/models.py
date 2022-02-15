@@ -1,3 +1,4 @@
+from os import link
 from turtle import title
 from django.db import models
 import datetime
@@ -65,7 +66,7 @@ class Movie_article(models.Model):
 
 #preview only first 50 characters of the body
     def snippest(self):
-        return self.body[:200] + "..."
+        return self.body[:100] + "..."
 
 
 
@@ -116,6 +117,12 @@ class Tv_series(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Sports_feeds(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    link = models.CharField(max_length=200, null=True)
+
 
 
 

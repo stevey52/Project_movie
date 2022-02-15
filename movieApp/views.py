@@ -6,13 +6,16 @@ from django.core.paginator import Paginator #importing module for breaking pages
 from .models import *
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from.forms import EmailForm
+from.forms import EmailForm,SearchField
 from django.conf import settings
 import os
 import environ
 from django.db.models import Count
 # from django.template import Template, Context
 # from django.template.loader import render_to_string
+
+import feedparser
+
 
 # Create your views here.
 class HomePage(ListView):
@@ -26,6 +29,8 @@ class HomePage(ListView):
         context = super().get_context_data(**kwargs)    
         context['TvSeries'] = Tv_series.objects.all()
         return context
+
+
 
 
 class DetailsPage(DetailView):
@@ -47,6 +52,7 @@ class SearchResultsView(ListView):
     template_name = 'homeView.html'
     model = Movie_article
 
+
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
@@ -57,30 +63,37 @@ class SearchResultsView(ListView):
 
         return object_list
 
-
-
-#search functionality buy quering the database from user inputs
-class SeriesView(ListView):
-    template_name = 'series.html'
+class Search_Series(ListView):
+    template_name = "homeView.html"
     model = Series
 
     def get_queryset(self):
-        query1 = self.request.GET.get('q')
-        if query1:
-            object_list = self.model.objects.filter(title__icontains=query1)
+        querys = self.request.GET.get('q')
+
+        if querys:
+            object_listz = self.model.objects.filter(title__icontains=querys)
 
         else:
-            object_list = self.model.objects.none()
+            object_listz = self.model.objects.none()
 
-        return object_list
-
-
+        return object_listz
 
 
-class ReadMore(DetailView):
-    model = Movie_article
-    template_name = "readMore.html"
 
+# #search functionality buy quering the database from user inputs
+# class SeriesView(ListView):
+#     template_name = 'series.html'
+#     model = Series
+
+#     def get_queryset(self):
+#         query1 = self.request.GET.get('q')
+#         if query1:
+#             object_list = self.model.objects.filter(title__icontains=query1)
+
+#         else:
+#             object_list = self.model.objects.none()
+
+#         return object_list
 
 
 # Sending an Email
@@ -149,8 +162,6 @@ class Comedy(ListView):
     def get_queryset(self):
         
         object_list = self.model.objects.filter(category__in=["comedy","drama"])
-
-
         return object_list
 
 
@@ -196,4 +207,11 @@ class SeriesDetails(DetailView):
     template_name = "seriesDetails.html"
 
 
+# function view for sports rss feeds
+def rssFeeds(request):
+    espn_sports = feedparser.parse("https://www.espn.com/espn/rss/soccer/news")
+    bbc_sports  = feedparser.parse("https://feeds.bbci.co.uk/sport/rss.xml")
+    
+
+    return render(request, 'sports.html',{'espn_sports':espn_sports, 'bbc_sports': bbc_sports})
 

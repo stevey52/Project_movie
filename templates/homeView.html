@@ -93,7 +93,8 @@
             <input type="radio" name="grade" id="popular">
             <label for="popular">Popular</label>
 
-            <input type="radio" name="grade" id="series">
+            <input type="radio" onclick="window.location.href = '{% url 'tv_series' %}'" name="grade" id="series">
+
             <label for="series">TV Series</label>
 
             <div class="checked-radio-bg"></div>
@@ -149,10 +150,6 @@
           {% endfor %}
         </div>
 
-
-          <!-- load more button -->
-        <!-- <button class="load-more">LOAD MORE</button> -->
-
         <!-- Next and previous page -->
         <div class="pagination">
     <span class="step-links">
@@ -162,7 +159,6 @@
             <button class="load-more" name="button">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</button>
         </span>
         <div class="btn-group">
-
 
             <a href="?page=1">
               <!-- &laquo; -->
@@ -200,7 +196,7 @@
 
       <section class="category" id="category">
 
-        <h2 class="section-heading">Category</h2>
+        <h2 class="section-heading"> Movie Category</h2>
 
         <div class="category-grid">
 
@@ -217,7 +213,7 @@
             <div class="name">
               <a href="{% url 'comedy_movies'%}">Comedy&Drama</a>
             </div>
-            <div class="total">50</div>
+            <div class="total">{{count}}</div>
           </div>
 
           <div class="category-card">
@@ -267,13 +263,14 @@
           </div>
           {% endfor %}
         </div>
-       
 
+        
+       
 
          <!-- load more button -->
         <a style="padding-top: 50px;" href="{% url 'tv_series'%}"><button class="load-more">LOAD TV SERIES</button></a>
-
       </section>
+      
     </main>
 
     <footer>

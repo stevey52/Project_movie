@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import *
+
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
@@ -8,6 +9,10 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
+
+     # RSS route 
+
+    path("sports/",rssFeeds, name="sports_view"),
 
     path("Series/<slug>/",SeriesDetails.as_view(), name="series_View"),
 
@@ -23,11 +28,11 @@ urlpatterns = [
    
     path("contact-us/",sendMail, name='contact_us'),
 
-    path("about_movie/<slug>/",ReadMore.as_view(),name="read_more"),
+
 
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),
 
-    path('search-series/',SeriesView.as_view(), name='search_seriess'),
+    path('search-series/',Search_Series.as_view(), name='search_Tvseries'),
 
     path("Upcoming/<slug>/",Upcoming_details.as_view(), name="upcomingDetail"),
     path("Upcoming/",UpcomingMovies.as_view(), name="upcoming"),
