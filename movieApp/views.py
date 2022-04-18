@@ -6,13 +6,12 @@ from django.core.paginator import Paginator #importing module for breaking pages
 from .models import *
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from.forms import EmailForm,SearchField
+from.forms import EmailForm
 from django.conf import settings
 import os
 import environ
 from django.db.models import Count
-# from django.template import Template, Context
-# from django.template.loader import render_to_string
+
 
 import feedparser
 
@@ -46,6 +45,10 @@ class UpcomingMovies(ListView):
 class Upcoming_details(DetailView):
     model = Upcoming
     template_name = "upcomingDetail.html"
+
+class Streaming(ListView):
+    model = Stream_movie
+    template_name = 'stream.html'
 
 #search functionality buy quering the database from user inputs
 class SearchResultsView(ListView):

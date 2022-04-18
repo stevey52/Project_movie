@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2dayMovies Streams</title>
+</head>
+<body>
+
+  
+<center>
+  <h3>Chosen for Streaming this week</h3>
+
+  <br>
+
+  {% for i in object_list %}
+  <h4>Tittle: {{i.title}}</h4>
+  <h5>Genre: {{i.genre}}</h5>
+
+  <video width="820" height="440" controls>
+      <source src="{{i.Movie.url}}" type="video/mp4">
+      <source src="{{i.Movie.url}" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
+
+  {% endfor %}
+
+</center>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -108,7 +108,7 @@ header, nav { background: var(--rich-black-fogra-29); }
  * navbar navigation style
  */
 
-nav { margin-right: 200px; }
+nav { margin-right: 10px; }
 
 .navbar-nav { display: flex; }
 

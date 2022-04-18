@@ -12,4 +12,6 @@ admin.site.register(Tv_series)
 
 admin.site.register(Sports_feeds)
 
+admin.site.register(Stream_movie)
+
 

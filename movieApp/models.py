@@ -107,7 +107,7 @@ class Series(models.Model):
         return self.title
 
 
-#The model ofTv series section displayed at homepage
+#The model of Tv series section displayed at homepage
 class Tv_series(models.Model):
     title = models.CharField(max_length=200)
     ratings = models.FloatField(blank=True, null=True)
@@ -122,6 +122,16 @@ class Tv_series(models.Model):
 class Sports_feeds(models.Model):
     title = models.CharField(max_length=200, null=True)
     link = models.CharField(max_length=200, null=True)
+
+
+# the model of streaming section
+class Stream_movie(models.Model):
+    title = models.CharField(max_length=100)
+    genre = models.CharField(max_length=100)
+    Movie = models.FileField(blank=False)
+
+    def __str__(self):
+        return self.title
 
 
 

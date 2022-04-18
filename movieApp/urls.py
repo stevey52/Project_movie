@@ -12,6 +12,8 @@ urlpatterns = [
 
      # RSS route 
 
+    path('episode_weekly', Streaming.as_view(), name='streaming_episode'), 
+
     path("sports/",rssFeeds, name="sports_view"),
 
     path("Series/<slug>/",SeriesDetails.as_view(), name="series_View"),
@@ -28,14 +30,15 @@ urlpatterns = [
    
     path("contact-us/",sendMail, name='contact_us'),
 
-
-
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),
 
     path('search-series/',Search_Series.as_view(), name='search_Tvseries'),
 
     path("Upcoming/<slug>/",Upcoming_details.as_view(), name="upcomingDetail"),
+
     path("Upcoming/",UpcomingMovies.as_view(), name="upcoming"),
+
     path("Movie_article/<slug>/",DetailsPage.as_view(), name="detailView"),
+
     path("",HomePage.as_view(), name="homeView")
 ]
