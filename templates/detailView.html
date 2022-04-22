@@ -22,7 +22,7 @@
       nav{
         background-color: #010b13;
       }
- 
+
     </style>
 
 <div class="container">
@@ -62,10 +62,10 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog">
+                  <div class="modal-dialog modal-fullscreen-sm-down">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Title:{{movie_article.title}}</h5>
+                        <h5 class="modal-title" style="color:black;">{{movie_article.title}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
@@ -83,19 +83,19 @@
               <h4>Download Torrent:</h4>
 
               <!-- 720p button with tooltip  -->
-              <button type="button" class="btn btn-outline-primary btn-sm" 
+              <button type="button" class="btn btn-outline-primary btn-sm"
               data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_720p}}"
               onclick="location.href='{{movie_article.download_720p}}'" name="button">
               download:720p</button>
 
               <!-- 1080p button with tooltip  -->
-              <button type="button" class="btn btn-outline-secondary btn-sm" 
-              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_1080p}}" 
+              <button type="button" class="btn btn-outline-secondary btn-sm"
+              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_1080p}}"
               onclick="location.href='{{movie_article.download_1080p}}'" name="button">
               download:1080p</button>
 
               <!-- 2160p button with tooltip  -->
-              <button type="button" class="btn btn-outline-success btn-sm" 
+              <button type="button" class="btn btn-outline-success btn-sm"
               data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_2160p}}"
               onclick="location.href='{{movie_article.download_2160p}}'" name="button">
               download:2160p</button>
@@ -112,7 +112,7 @@
           <h2 style="padding-top: 50px;">Watch Trailer</h2>
         </div>
       </div>
-    
+
       <div class="row">
         <div class=" col embed-responsive embed-responsive-16by9">
           <iframe width="100%" height="600" src="{{movie_article.trailer}}"
@@ -131,7 +131,7 @@
     </div>
   </section>
 </main>
-</div> 
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

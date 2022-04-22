@@ -3,8 +3,6 @@
 
 {% block content%}
 
-
-
 <!--
     - main container
   -->
@@ -183,7 +181,7 @@
               <button class="load-more" id="next-button" type="button" name="button">next</button>
             </a>
 
-            
+
         </div>
         {% endif %}
     </span>
@@ -231,7 +229,7 @@
             </div>
             <div class="total">80</div>
           </div>
-          
+
         </div>
       </section>
 
@@ -242,7 +240,7 @@
         <h2 class="section-heading"> Tv Series</h2>
 
         <div class="live-grid">
-          
+
           {% for shows in TvSeries %}
           <div class="live-card">
 
@@ -264,13 +262,13 @@
           {% endfor %}
         </div>
 
-        
-       
+
+
 
          <!-- load more button -->
         <a style="padding-top: 50px;" href="{% url 'tv_series'%}"><button class="load-more">LOAD TV SERIES</button></a>
       </section>
-      
+
     </main>
 
     <footer>
