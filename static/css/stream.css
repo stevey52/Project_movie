@@ -3,6 +3,12 @@ h4 a:hover{
   color: red;
 }
 
+h4 a{
+  font-size: 20px;
+  padding-left: 130px;
+}
+
+
 .modal-dialog {
       max-width: 800px;
       margin: 30px auto;
