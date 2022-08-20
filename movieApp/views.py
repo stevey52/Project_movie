@@ -1,4 +1,5 @@
 
+from multiprocessing import context
 from unicodedata import category
 from django.shortcuts import render
 from django.views.generic import *
@@ -20,13 +21,18 @@ import feedparser
 class HomePage(ListView):
     model = Movie_article
     template_name = "homeView.html"
-    paginate_by = 14  #divide pages contents(each page to have 12 contents)
+    paginate_by = 21  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)    
+        context = super().get_context_data(**kwargs)
         context['TvSeries'] = Tv_series.objects.all()
+        return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['slides'] = SlidesModel.objects.all()
         return context
 
 
@@ -83,22 +89,6 @@ class Search_Series(ListView):
 
 
 
-# #search functionality buy quering the database from user inputs
-# class SeriesView(ListView):
-#     template_name = 'series.html'
-#     model = Series
-
-#     def get_queryset(self):
-#         query1 = self.request.GET.get('q')
-#         if query1:
-#             object_list = self.model.objects.filter(title__icontains=query1)
-
-#         else:
-#             object_list = self.model.objects.none()
-
-#         return object_list
-
-
 # Sending an Email
 
 def sendMail(request):
@@ -148,10 +138,10 @@ class Action(ListView):
 
 
     def get_queryset(self):
-        
+
         object_list = self.model.objects.filter(category="action")
         q = Movie_article.objects.annotate(Count('category'))
-            
+
 
         return object_list,q
 
@@ -163,7 +153,7 @@ class Comedy(ListView):
 
 
     def get_queryset(self):
-        
+
         object_list = self.model.objects.filter(category__in=["comedy","drama"])
         return object_list
 
@@ -177,7 +167,7 @@ class Animation(ListView):
 
 
     def get_queryset(self):
-        
+
         object_list = self.model.objects.filter(category="animated")
 
         return object_list
@@ -192,7 +182,7 @@ class Horror(ListView):
 
 
     def get_queryset(self):
-        
+
         object_list = self.model.objects.filter(category="horror")
 
         return object_list
@@ -214,7 +204,11 @@ class SeriesDetails(DetailView):
 def rssFeeds(request):
     espn_sports = feedparser.parse("https://www.espn.com/espn/rss/soccer/news")
     bbc_sports  = feedparser.parse("https://feeds.bbci.co.uk/sport/rss.xml")
-    
+
 
     return render(request, 'sports.html',{'espn_sports':espn_sports, 'bbc_sports': bbc_sports})
 
+
+# class SlideShow(ListView):
+#      model = SlidesModel
+#      template_name = "homeView.html"

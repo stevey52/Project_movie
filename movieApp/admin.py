@@ -14,4 +14,6 @@ admin.site.register(Sports_feeds)
 
 admin.site.register(Stream_movie)
 
+admin.site.register(SlidesModel)
+
 

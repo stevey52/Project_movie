@@ -134,5 +134,10 @@ class Stream_movie(models.Model):
         return self.title
 
 
+class SlidesModel(models.Model):
+    name = models.CharField(max_length=100)
+    ratings = models.CharField(max_length=50,null=True)
+    image = models.ImageField(default='logos.jpeg',blank=True)
 
-
+    def __str__(self):
+        return self.name

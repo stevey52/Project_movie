@@ -3,10 +3,7 @@
 
 {% block content%}
 
-<!--
-    - main container
-  -->
-  <!-- <div class="container"> -->
+
 
       <!-- - MAIN SECTION -->
 
@@ -14,40 +11,45 @@
 
       <!-- #BANNER SECTION -->
       <section class="banner">
-        <div class="banner-card">
 
-          <img src="{% static 'images/vikins.jpg' %}" class="banner-img" alt="">
+<div class="banner-card">
+  {% for SlidesModel in slides %}
+      <img class="mySlides" src="{{SlidesModel.image.url}}" alt="img1">
 
-          <div class="card-content">
-            <div class="card-info">
+      <div class="card-content">
+       
+        <div class="card-info">
 
-              <div class="genre">
-                <ion-icon name="film"></ion-icon>
-                <span>Action/Thriller</span>
-              </div>
-
-              <div class="year">
-                <ion-icon name="calendar"></ion-icon>
-                <span>2019</span>
-              </div>
-
-              <div class="duration">
-                <ion-icon name="time"></ion-icon>
-                <span>2h 11m</span>
-              </div>
-
-              <div class="quality">4K</div>
-
-            </div>
-            <h2> High Rated HD Movies</h2>
-            <h2 class="card-title">John Wick: Chapter 3 - Parabellum</h2>
-            <h3 class="card-title">Movie of the week</h3>
+          <div class="genre">
+            <ion-icon name="film"></ion-icon>
+            <span>Action/Thriller</span>
           </div>
 
+          <div class="year">
+            <ion-icon name="calendar"></ion-icon>
+            <span>2019</span>
+          </div>
+
+          <div class="duration">
+            <ion-icon name="time"></ion-icon>
+            <span>2h 11m</span>
+          </div>
+
+          <div class="quality">4K</div>
+
         </div>
-      </section>
+
+         <!-- <h2 class="card-title"> High Rated HD Movies</h2> -->
+         <h2 class="card-title">{{SlidesModel.name}}</h2>
+         <!-- <h3 class="card-title">Movie of the week</h3> -->
+      
+      </div>
+      {% endfor %}
 
 
+</div>
+
+</section>
 
 
 

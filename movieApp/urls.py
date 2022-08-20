@@ -12,6 +12,8 @@ urlpatterns = [
 
      # RSS route 
 
+    #  path('slides', SlideShow.as_view(), name='slideshow'),
+
     path('episode_weekly', Streaming.as_view(), name='streaming_episode'), 
 
     path("sports/",rssFeeds, name="sports_view"),

@@ -229,6 +229,8 @@ nav { margin-right: 10px; }
 
 .banner-card:hover .banner-img { transform: scale(1.1); }
 
+.mySlides:hover {transform: scale(1.1);}
+
 .banner-card .card-content {
   position: absolute;
   right:  80px;
