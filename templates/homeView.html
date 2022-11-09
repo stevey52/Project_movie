@@ -5,7 +5,9 @@
 
 
 
+
       <!-- - MAIN SECTION -->
+       <!-- <link rel="stylesheet" href="{% static 'css/slider.css' %}"> -->
 
     <main>
 
@@ -13,10 +15,36 @@
       <section class="banner">
 
 <div class="banner-card">
-  {% for SlidesModel in slides %}
-      <img class="mySlides" src="{{SlidesModel.image.url}}" alt="img1">
+  {% for item in slides %}
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+         <img src="{{item.image.url}}" alt="img1">
+         <div class="card-content">
+        <h2 style="color:black;">{{item.name}}</h2>
+         <ion-icon name="star-outline"></ion-icon>
+          <span><strong>{{item.ratings}}</strong></span>
+      </div>
 
-      <div class="card-content">
+      </div>
+    </div>
+     
+  {% endfor %}
+
+
+
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+      <!-- <div class="card-content">
+        <h2 class="card-title"> High Rated HD Movies</h2>
+        
        
         <div class="card-info">
 
@@ -39,13 +67,10 @@
 
         </div>
 
-         <!-- <h2 class="card-title"> High Rated HD Movies</h2> -->
-         <h2 class="card-title">{{SlidesModel.name}}</h2>
-         <!-- <h3 class="card-title">Movie of the week</h3> -->
+       
       
-      </div>
-      {% endfor %}
-
+      </div> -->
+    
 
 </div>
 
@@ -87,10 +112,10 @@
 
           <div class="filter-radios">
 
-            <input type="radio" name="grade" id="featured" checked>
+            <input type="radio" name="grade" id="featured" >
             <label for="featured">Featured</label>
 
-            <input type="radio" name="grade" id="popular">
+            <input type="radio" onclick="window.location.href = 'https://vidlnk.com/cl/24a3ed404a5c1146?p1=&p2=&source=&site='" name="grade" id="popular">
             <label for="popular">Popular</label>
 
             <input type="radio" onclick="window.location.href = '{% url 'tv_series' %}'" name="grade" id="series">

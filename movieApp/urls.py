@@ -14,6 +14,8 @@ urlpatterns = [
 
     #  path('slides', SlideShow.as_view(), name='slideshow'),
 
+    path('wheelSpin', Spin.as_view(), name='LuckySpin'),
+
     path('episode_weekly', Streaming.as_view(), name='streaming_episode'), 
 
     path("sports/",rssFeeds, name="sports_view"),

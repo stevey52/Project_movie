@@ -29,7 +29,8 @@ class HomePage(ListView):
         context = super().get_context_data(**kwargs)
         context['TvSeries'] = Tv_series.objects.all()
         return context
-
+        
+# view from slidesModel
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['slides'] = SlidesModel.objects.all()
@@ -212,3 +213,7 @@ def rssFeeds(request):
 # class SlideShow(ListView):
 #      model = SlidesModel
 #      template_name = "homeView.html"
+
+
+class Spin(TemplateView):
+    template_name = "Spin.html"
