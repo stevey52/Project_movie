@@ -30,7 +30,7 @@ urlpatterns = [
 
     path("horror/",Horror.as_view(), name="horror_movies"),
 
-    path("random/",RandomMovie.as_view(), name="most_watched"),
+    path("popular/",RandomMovie.as_view(), name="most_watched"),
    
     path("contact-us/",sendMail, name='contact_us'),
 
