@@ -1,140 +1,110 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>2dayMovies Hot Picks</title>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2dayMovies Hot picks</title>
 
-    <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
-    <link rel="stylesheet" href="{% static 'css/detailView.css'%}">
-    <script src="{% static 'java/detalView.js'%}"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </head>
-  <body>
+    <!-- awsome font cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style media="screen">
+     <!-- link the css -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/detailView.css' %}">
 
-      body{
-        background-color: #010b13;
-      }
-      nav{
-        background-color: #010b13;
-      }
+</head>
+<body>
+  <div class="container">
 
-    </style>
+  <header>
+    <a href="{% url 'homeView' %}" class="logo"> <img src="{% static 'images/logo.png' %}"></a>
 
-<div class="container">
+    <ul class="navigation">
+      
+      <li><a href="{% url 'homeView' %}">Home</a></li>
+      <li><a href="{% url 'tv_series'%}">TV Shows</a></li>
+      <li><a href="{% url 'homeView' %}">Movies</a></li>
+      
+    </ul>
 
-  <!-- Navbar section -->
-  <section>
-      <nav class="navbar navbar-light">
-        <div class="container-fluid">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'homeView'%}"><strong>2dayMovies</strong></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-  </section>
-
-<!-- the main section -->
-<main>
-  <section style="padding-top: 50px;">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <img src="{{movie_article.image.url}}" alt="No Image" style="width:20vw; float:left">
-            </div>
-
-            <div class="col">
-              <h1 style="text-align:center;">{{movie_article.title}}</h1>
-              <h3 align="center">{{movie_article.year}}</h3>
-              <h3 align="center">{{movie_article.genre1}} | {{movie_article.genre2}} | {{movie_article.genre3}}</h3>
-              <h4 align="center"><img id="imdb" src="{% static "images/IMDb.webp"%}" alt="IMDb">{{movie_article.ratings}}</h4>
-            </div>
-
-            <div class="col">
-              <h5>{{movie_article.synopsis}}</h5>
-              <p>{{movie_article.snippest}}<a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="">read more</a></p>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-fullscreen-sm-down">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" style="color:black;">{{movie_article.title}}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        {{movie_article.body}}
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <p>Posted: {{movie_article.date}}</p>
-
-
-              <h4>Download Torrent:</h4>
-
-              <!-- 720p button with tooltip  -->
-              <button type="button" class="btn btn-outline-primary btn-sm"
-              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_720p}}"
-              onclick="location.href='{{movie_article.download_720p}}'" name="button">
-              download:720p</button>
-
-              <!-- 1080p button with tooltip  -->
-              <button type="button" class="btn btn-outline-secondary btn-sm"
-              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_1080p}}"
-              onclick="location.href='{{movie_article.download_1080p}}'" name="button">
-              download:1080p</button>
-
-              <!-- 2160p button with tooltip  -->
-              <button type="button" class="btn btn-outline-success btn-sm"
-              data-bs-toggle="tooltip" data-bs-placement="top" title="{{movie_article.size_2160p}}"
-              onclick="location.href='{{movie_article.download_2160p}}'" name="button">
-              download:2160p</button>
-
-            </div>
-
-          </div>
-
-
-      <!-- making play a trailer from page -->
-      <!-- 16:9 aspect ratio -->
-      <div class="row">
-        <div class="col">
-          <h2 style="padding-top: 50px;">Watch Trailer</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class=" col embed-responsive embed-responsive-16by9">
-          <iframe width="100%" height="600" src="{{movie_article.trailer}}"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        </div>
-      </div>
-
-        <div class="col-sm-12">
-          <legend>
-          <h1>Director</h1>
-            <a href="{{movie_article.director_info}}">{{movie_article.director}}</a>
-          </legend>
-      </div>
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-  </section>
-</main>
+  </header>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <div class="banner">
+    {% if movie_article.image_bg != '' %}
+      <img src="{{movie_article.image_bg.url}}" class="bg">
+    {% else %}
+      <style type="text/css">
+        body{
+          background: linear-gradient(to right,
+                rgb(0, 0, 81), rgb(0, 10, 0));;
+        }
+      </style>
 
-  </body>
+    {% endif %}
+
+    <div class="content">
+      <h2 class="movieTitle">
+            <span>{{movie_article.title}}</span>
+            </h2>
+
+        <h4>
+          <span>{{movie_article.year}}</span>
+          <span>{{movie_article.category}}</span>
+          <span>{{movie_article.duration}}</span>
+        </h4>
+        <p>{{movie_article.body}}</p>
+
+        <h4 class="download">Download Torrent</h4>
+        
+
+        <div class="buttons">
+          <a onclick="location.href='{{movie_article.download_720p}}'"><i class="fa-solid fa-download"></i></i> 720p</a>
+          <a onclick="location.href='{{movie_article.download_1080p}}'"><i class="fa-solid fa-download"></i></i> 1080p</a>
+          <!-- <a onclick="location.href='{{movie_article.download_2160p}}'"><i class="fa-solid fa-download"></i></i> 2160p</a> -->
+        </div> 
+    </div>
+    <a class="play" onclick="toggleVideo();"> 
+      <img src="{% static 'images/play.png'%}">Watch Trailer</a>
+  </div>
+
+  <div class="trailer">
+
+
+    <iframe width="560" height="315" src="{{movie_article.trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <img src="{% static 'images/close.png' %}" class="close" onclick="closeIframe();">
+
+
+  </div>
+
+
+
+<!-- custom js link -->
+
+    <script>
+        function toggleVideo(){
+            const trailer = document.querySelector('.trailer');
+            const video = document.querySelector('iframe');
+            trailer.classList.toggle('active')
+            video.currentTime = 0;
+            video.pause();
+        }
+
+        function closeIframe(){
+          const trailer = document.querySelector('.trailer')
+          const frame = document.querySelector('iframe')
+          trailer.classList.toggle('active')
+          frame.parentNode.removeChild(frame)
+
+        }
+    </script>
+    
+</body>
 </html>

@@ -6,10 +6,17 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Visit the website for Easily download High Rated HD movies, Tv Series and get latest Sports News from various sources,Download movie torrent in just one click of a button">
-  <!-- <link rel="icon" href="{% static 'images/icon.png'%}" type="image/png"> -->
+
+  <!--adcash code-->
+    <meta name="a.validate.02" content="JKcemJZYDDBZO52wylsIqSFLmrkfmXxIXhal" />
+
+
+
   <title>2dayMovies Hot picks</title>
 
   
@@ -28,6 +35,18 @@
 
   <!-- google font link -->
   <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+
+
+   <!-- google analytics for tracking web activies -->
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VFJNWFZNFY"></script>
+
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-VFJNWFZNFY');
+    </script>
 </head>
 
 <body>
@@ -49,8 +68,10 @@
         </button>
 
 
-        <a href="{%url 'homeView'%}" class="navbar-brand indicator"><strong>2dayMovies</strong>
-          <!-- <img src="{% static 'images/logo.png'%}" alt=""> --></a>
+        <a href="{%url 'homeView'%}" class="navbar-brand indicator">
+          <!-- <strong>2dayMovies</strong> -->
+          <img class="logo" src="{% static 'images/logo.png'%}" alt="" style="max-width: 120px;">
+        </a>
 
 
          <!-- navbar navigation -->
@@ -59,10 +80,8 @@
           <ul class="navbar-nav">
             <!-- <li> <a href="{%url 'homeView'%}" class="navbar-link">Home</a> </li> -->
             <li> <a href="#category" class="navbar-link">Category</a> </li>
-            <li> <a href="#live" class="navbar-link">TV Series</a> </li>
-            <li> <a href="{% url 'LuckySpin' %}"  class="navbar-link">Lucky Spin</a> </li>
-            <!-- <li> <a href="{% url 'upcoming'%}" class="navbar-link">Upcoming</a> </li> -->
-            <li> <a href="{% url 'streaming_episode' %}" class="navbar-link">Stream Episodes</a> </li>
+            <li> <a href="{% url 'tv_series'%}" class="navbar-link">TV Series</a> </li>
+
             <li> <a href="{% url 'sports_view' %}" class="navbar-link">Sports News</a> </li>
           </ul>
         </nav>
@@ -75,7 +94,7 @@
 
           <form action="{% url 'search_results' %}" class="navbar-form" method="GET">
             {% csrf_token %} {{forms.as_p}}
-            <input type="text" value='{{ request.GET.q}}' name="q" placeholder="I'm looking for..." class="navbar-form-search" required>
+            <input type="text" value='{{ request.GET.q}}' name="q" placeholder="| Search" class="navbar-form-search" required>
 
             <button type="submit" class="navbar-form-btn">
               <ion-icon name="search-outline"></ion-icon>
@@ -118,21 +137,17 @@
       - FOOTER SECTION
     -->
 <footer>
-
-  </div>
-
-
       <div class="footer-copyright">
 
         <div class="container">
         <div class="wrapper">
-          <a href=""><strong>Support Email: 2daymoviez@gmail.com</strong></a>
+          <span><strong>Support Email: 2daymoviez@gmail.com</strong></span>
           <!-- <a href="#">Terms and conditions</a> -->
         </div>
       </div>
 
         <div class="copyright">
-          <p align="left">copyright 2021 @Mtawatechs.inc</p>
+          <p>copyright 2021 @Mtawatechs.inc</p>
         </div>
 
   </div>
@@ -150,9 +165,13 @@
 
 
     <!-- - ionicon link -->
-
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+  <!--adCash code-->
+<script type="text/javascript" data-adel="atag" src="//acscdn.com/script/atg.js" czid="rxotds1lu"></script>
+
 </body>
 
 </html>

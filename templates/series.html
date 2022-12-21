@@ -29,24 +29,14 @@
                 <span>Ep.{{Series.episode}}</span>
               </div>
 
-              <div class="play">
-                <!-- <span class="genre">{{Movie_article.genre1}}</span>
-                <span class="genre">{{Movie_article.genre2}}</span>
-                <span class="genre">{{Movie_article.genre3}}</span> -->
-
-              </div>
-
             </div>
           </div>
 
           <div class="card-body">
             <a href="{%url 'series_View' Series.slug%}">
-            <h3 class="card-title">{{Series.title}} E{{series.episode}}</h3>
+            <h3 class="card-title">{{Series.title}}</h3>
+            <span>E:{{series.episode}}</span>
             </a>
-
-            <div class="card-info">
-              <!-- <span class="year">{{Movie_article.year}}</span> -->
-            </div>
 
           </div>
 

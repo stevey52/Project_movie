@@ -1,12 +1,10 @@
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
 
 
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+function toggleVideo(){
+  const trailer = document.querySelector('.trailer');
+  const video = document.querySelector('video');
+  trailer.classList.toggle('active')
+  video.currentTime = 0;
+  video.pause();
+}

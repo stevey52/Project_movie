@@ -13,6 +13,8 @@ import os
 import environ
 from django.db.models import Count
 
+import random
+
 
 import feedparser
 
@@ -21,7 +23,7 @@ import feedparser
 class HomePage(ListView):
     model = Movie_article
     template_name = "homeView.html"
-    paginate_by = 21  #divide pages contents(each page to have 12 contents)
+    paginate_by = 14  #divide pages contents(each page to have 12 contents)
     ordering = ['-date']  #odering posts by date, last posted to be new post
 
 
@@ -43,19 +45,7 @@ class DetailsPage(DetailView):
     model = Movie_article
     template_name = "detailView.html"
 
-class UpcomingMovies(ListView):
-    model = Upcoming
-    template_name = "upcoming.html"
-    ordering = ['-date']
-    paginate_by = 14
 
-class Upcoming_details(DetailView):
-    model = Upcoming
-    template_name = "upcomingDetail.html"
-
-class Streaming(ListView):
-    model = Stream_movie
-    template_name = 'stream.html'
 
 #search functionality buy quering the database from user inputs
 class SearchResultsView(ListView):
@@ -74,7 +64,7 @@ class SearchResultsView(ListView):
         return object_list
 
 class Search_Series(ListView):
-    template_name = "homeView.html"
+    template_name = "series.html"
     model = Series
 
     def get_queryset(self):
@@ -141,10 +131,10 @@ class Action(ListView):
     def get_queryset(self):
 
         object_list = self.model.objects.filter(category="action")
-        q = Movie_article.objects.annotate(Count('category'))
+        # q = Movie_article.objects.annotate(Count('category'))
 
 
-        return object_list,q
+        return object_list
 
 
 #Views for comedy movies category
@@ -188,6 +178,24 @@ class Horror(ListView):
 
         return object_list
 
+#Random movies view
+class RandomMovie(ListView):
+    model = Movie_article
+    template_name = "homeView.html"
+
+
+    def get_queryset(self):
+        # items = self.model.objects.all()
+        items = list(Movie_article.objects.all())
+
+        # change 7 to how many random items you want
+        random_items = random.sample(items, 14)
+        # if you want only a single random item
+        # random_item = random.choice(items)
+        return random_items
+
+
+
 
 ##Series views
 class Series_page(ListView):
@@ -210,10 +218,4 @@ def rssFeeds(request):
     return render(request, 'sports.html',{'espn_sports':espn_sports, 'bbc_sports': bbc_sports})
 
 
-# class SlideShow(ListView):
-#      model = SlidesModel
-#      template_name = "homeView.html"
 
-
-class Spin(TemplateView):
-    template_name = "Spin.html"

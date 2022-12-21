@@ -5,6 +5,8 @@ import datetime
 from django.urls import reverse
 from django.utils.timezone import now
 
+
+
 #year selection for movie_article
 YEAR_CHOICES = []
 for r in range(1940, (datetime.datetime.now().year+1)):
@@ -34,7 +36,7 @@ class Movie_article(models.Model):
 
     genre1 = models.CharField(max_length=50,null=True)
     genre2 = models.CharField(max_length=50,null=True)
-    genre3 = models.CharField(max_length=50,default="...")
+    genre3 = models.CharField(max_length=50, null=True)
 
     year = models.IntegerField(('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year)
 
@@ -42,19 +44,21 @@ class Movie_article(models.Model):
     download_1080p = models.CharField(max_length=200,null=True)
     download_2160p = models.CharField(max_length=200,null=True)
 
-    size_720p = models.CharField(max_length=20,default='720p')
-    size_1080p = models.CharField(max_length=20,default='1080p')
-    size_2160p = models.CharField(max_length=20,default='2160p')
+    # size_720p = models.CharField(max_length=20,default='720p')
+    # size_1080p = models.CharField(max_length=20,default='1080p')
+    # size_2160p = models.CharField(max_length=20,default='2160p')
 
     trailer = models.CharField(max_length=200,null=True)
-    director = models.CharField(max_length=50,default="...")
-    director_info = models.CharField(max_length=500,null=True)
+    # director = models.CharField(max_length=50,default="...")
+    # director_info = models.CharField(max_length=500,null=True)
+    duration = models.CharField(max_length=10, null=True)
 
     category = models.CharField(max_length=200, default="horror", choices=category_choices)
 
     body = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(default='logos.jpeg',blank=True)
+    image_bg = models.ImageField(default='static/images/cinema.jpg' ,blank=True)
     #add author
 
 
@@ -70,26 +74,6 @@ class Movie_article(models.Model):
 
 
 
-#upcoming movies model
-class Upcoming(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(null=False, unique=True, default="upcoming")
-    synopsis = models.CharField(max_length=200, default="Synopsis")
-    genre1 = models.CharField(max_length=50,null=True)
-    genre2 = models.CharField(max_length=50,null=True)
-    genre3 = models.CharField(max_length=50,default="...")
-    trailer = models.CharField(max_length=200,null=True)
-    image = models.ImageField(default='logos.jpeg',blank=True)
-    date = models.DateTimeField(auto_now_add=True)
-    release_Date = models.DateField(u'Release Date') #calendar for date picker
-    body = models.TextField(null=True)
-
-
-    def __str__(self):
-        return self.title
-
-
-
 #series models
 class Series(models.Model):
     title = models.CharField(max_length=200)
@@ -100,6 +84,7 @@ class Series(models.Model):
     download = models.CharField(max_length=200, blank=True)
     filesize = models.CharField(blank=True,max_length=200)
     image = models.ImageField(blank=True)
+    image_bg = models.ImageField(blank=True)
 
 
 
@@ -124,14 +109,7 @@ class Sports_feeds(models.Model):
     link = models.CharField(max_length=200, null=True)
 
 
-# the model of streaming section
-class Stream_movie(models.Model):
-    title = models.CharField(max_length=100)
-    genre = models.CharField(max_length=100)
-    Movie = models.FileField(blank=False)
 
-    def __str__(self):
-        return self.title
 
 
 class SlidesModel(models.Model):

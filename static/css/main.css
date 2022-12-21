@@ -124,7 +124,6 @@ nav { margin-right: 10px; }
 /**
  * live indicator style
  */
-
 .indicator { position: relative; }
 
 .indicator::after {

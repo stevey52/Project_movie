@@ -14,9 +14,7 @@ urlpatterns = [
 
     #  path('slides', SlideShow.as_view(), name='slideshow'),
 
-    path('wheelSpin', Spin.as_view(), name='LuckySpin'),
 
-    path('episode_weekly', Streaming.as_view(), name='streaming_episode'), 
 
     path("sports/",rssFeeds, name="sports_view"),
 
@@ -31,16 +29,14 @@ urlpatterns = [
     path("animated/",Animation.as_view(), name="animated_movies"),
 
     path("horror/",Horror.as_view(), name="horror_movies"),
+
+    path("random/",RandomMovie.as_view(), name="most_watched"),
    
     path("contact-us/",sendMail, name='contact_us'),
 
     path('search-movie/',SearchResultsView.as_view(), name='search_results'),
 
     path('search-series/',Search_Series.as_view(), name='search_Tvseries'),
-
-    path("Upcoming/<slug>/",Upcoming_details.as_view(), name="upcomingDetail"),
-
-    path("Upcoming/",UpcomingMovies.as_view(), name="upcoming"),
 
     path("Movie_article/<slug>/",DetailsPage.as_view(), name="detailView"),
 
