@@ -43,7 +43,13 @@
 
     <div class="content">
       <h2 class="movieTitle">
-            <span>{{series.title}} E{{series.episode}}</span>
+
+            <span>{{series.title}} </span>
+            {% if series.episode != None %}
+              <span>E{{series.episode}}</span>
+            {% else %}
+            <span>Complete</span>
+            {% endif %}
             </h2>
 
            
@@ -59,7 +65,8 @@
         
 
         <div class="buttons">
-          <a onclick="location.href='{{movie_article.download_720p}}'"><i class="fa-solid fa-download"></i></i> Download </a>
+          <a onclick="location.href='{{series.download}}'">
+            <i class="fa-solid fa-download"></i></i> Download </a>
          
         </div> 
     </div>

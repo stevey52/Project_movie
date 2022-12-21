@@ -35,7 +35,11 @@
           <div class="card-body">
             <a href="{%url 'series_View' Series.slug%}">
             <h3 class="card-title">{{Series.title}}</h3>
-            <span>E:{{series.episode}}</span>
+            {% if Series.episode != None %}
+              <span>E:{{Series.episode}}</span>
+              {% else %}
+                <span>Complete</span>
+                {%endif%}
             </a>
 
           </div>
