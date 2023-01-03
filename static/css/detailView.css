@@ -9,7 +9,7 @@
 
 body{
     background: #000;
-     
+
     }
 
 header{
@@ -108,7 +108,7 @@ header .logo img{
 
 /*.bg{
     content: "";
-    position: absolute;     
+    position: absolute;
     background: linear-gradient(to right,
                 rgb(0, 0, 81), rgb(0, 10, 0));
     filter: blur(0.1em);
@@ -125,13 +125,13 @@ header .logo img{
 
 .content .movieTitle span{
 /*     max-width: 250px; */
-     top: 100%; 
+     top: 100%;
     color: #fff;
     padding: 10 20px;
     display: inline-block;
     font-style: normal;
     font-size: 50px;
-   
+
 }
 
 .banner .content h4{
@@ -259,7 +259,7 @@ header .logo img{
 .trailer.active{
     visibility: visible;
     opacity: 1;
-    
+
 }
 
 .trailer video{

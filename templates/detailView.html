@@ -22,11 +22,11 @@
     <a href="{% url 'homeView' %}" class="logo"> <img src="{% static 'images/logo.png' %}"></a>
 
     <ul class="navigation">
-      
+
       <li><a href="{% url 'homeView' %}">Home</a></li>
       <li><a href="{% url 'tv_series'%}">TV Shows</a></li>
       <li><a href="{% url 'homeView' %}">Movies</a></li>
-      
+
     </ul>
 
     <div class="search">
@@ -37,9 +37,9 @@
 </div>
 
   <div class="banner">
-    {% if movie_article.image_bg != '' %}
+    <!-- {% if movie_article.image_bg != '' %} -->
       <img src="{{movie_article.image_bg.url}}" class="bg">
-    {% else %}
+    <!-- {% else %}
       <style type="text/css">
         body{
           background: linear-gradient(to right,
@@ -47,7 +47,7 @@
         }
       </style>
 
-    {% endif %}
+    {% endif %} -->
 
     <div class="content">
       <h2 class="movieTitle">
@@ -62,15 +62,15 @@
         <p>{{movie_article.body}}</p>
 
         <h4 class="download">Download Torrent</h4>
-        
+
 
         <div class="buttons">
           <a onclick="location.href='{{movie_article.download_720p}}'"><i class="fa-solid fa-download"></i></i> 720p</a>
           <a onclick="location.href='{{movie_article.download_1080p}}'"><i class="fa-solid fa-download"></i></i> 1080p</a>
           <!-- <a onclick="location.href='{{movie_article.download_2160p}}'"><i class="fa-solid fa-download"></i></i> 2160p</a> -->
-        </div> 
+        </div>
     </div>
-    <a class="play" onclick="toggleVideo();"> 
+    <a class="play" onclick="toggleVideo();">
       <img src="{% static 'images/play.png'%}">Watch Trailer</a>
   </div>
 
@@ -105,6 +105,6 @@
 
         }
     </script>
-    
+
 </body>
 </html>

@@ -42,7 +42,7 @@ class Movie_article(models.Model):
 
     download_720p = models.CharField(max_length=200,null=True)
     download_1080p = models.CharField(max_length=200,null=True)
-    download_2160p = models.CharField(max_length=200,null=True)
+    # download_2160p = models.CharField(max_length=200,null=True)
 
     # size_720p = models.CharField(max_length=20,default='720p')
     # size_1080p = models.CharField(max_length=20,default='1080p')
