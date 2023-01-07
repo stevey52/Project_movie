@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width,
+     minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+
     <title>2dayMovies Hot picks</title>
 
     <!-- awsome font cdn -->
@@ -13,13 +15,16 @@
 
      <!-- link the css -->
      <link rel="stylesheet" type="text/css" href="{% static 'css/detailView.css' %}">
+     <link rel="stylesheet" href="{% static 'css/avatar.css'%}">
+     <link rel="stylesheet" href="{% static 'css/mobileView/mobile_view.css'%}">
+     <link rel="stylesheet" href="{% static 'css/model.css'%}">
 
 </head>
 <body>
   <div class="container">
 
   <header>
-    <a href="{% url 'homeView' %}" class="logo"> <img src="{% static 'images/logo.png' %}"></a>
+    <a href="{% url 'homeView' %}" class="logo"><img src="{% static 'images/logo.png' %}"></a>
 
     <ul class="navigation">
 
@@ -30,15 +35,27 @@
     </ul>
 
     <div class="search">
-      <input type="text" placeholder="Search">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text">
+      <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
     </div>
   </header>
 </div>
 
   <div class="banner">
     <!-- {% if movie_article.image_bg != '' %} -->
-      <img src="{{movie_article.image_bg.url}}" class="bg">
+      <!-- <img src="{{movie_article.image_bg.url}}" class="bg"> -->
+      <style media="screen">
+        body{
+          background-image: url({{movie_article.image_bg.url}});
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 100vh;
+        }
+        html{
+          height:  100%;
+        }
+
+      </style>
     <!-- {% else %}
       <style type="text/css">
         body{
@@ -50,29 +67,87 @@
     {% endif %} -->
 
     <div class="content">
-      <h2 class="movieTitle">
+      <h5 class="movieTitle">
             <span>{{movie_article.title}}</span>
-            </h2>
+          </h5>
 
         <h4>
           <span>{{movie_article.year}}</span>
           <span>{{movie_article.category}}</span>
           <span>{{movie_article.duration}}</span>
         </h4>
-        <p>{{movie_article.body}}</p>
+        <p>{{movie_article.snippest}}</p>
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>{{movie_article.body}}</p>
+            </div>
+          </div>
+
 
         <h4 class="download">Download Torrent</h4>
 
 
         <div class="buttons">
-          <a onclick="location.href='{{movie_article.download_720p}}'"><i class="fa-solid fa-download"></i></i> 720p</a>
-          <a onclick="location.href='{{movie_article.download_1080p}}'"><i class="fa-solid fa-download"></i></i> 1080p</a>
+          <a onclick="location.href='{{movie_article.download_720p}}'">
+            <i class="fa-solid fa-download"></i> 720p</a>
+
+          <a onclick="location.href='{{movie_article.download_1080p}}'">
+            <i class="fa-solid fa-download"></i></i> 1080p</a>
           <!-- <a onclick="location.href='{{movie_article.download_2160p}}'"><i class="fa-solid fa-download"></i></i> 2160p</a> -->
         </div>
     </div>
+
     <a class="play" onclick="toggleVideo();">
       <img src="{% static 'images/play.png'%}">Watch Trailer</a>
   </div>
+
+  <div class="card">
+      <div class="poster">
+          <img src="{{movie_article.image.url}}" alt="">
+      </div>
+      <div class="details">
+          <img src="avtarlogo.png" class="logo" alt="">
+          <h3>Directed by</h3>
+          <h4>{{movie_article.director}}</h4>
+          <div class="ratings">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span>4/5</span>
+          </div>
+          <div class="tags">
+              <span>{{movie_article.genre1}}</span>
+              <span>{{movie_article.genre2}}</span>
+          </div>
+          <div class="info">
+              <p>{{movie_article.snippest}}</p>
+          </div>
+          <div class="cast">
+              <h4 style="color:#000">Cast</h4>
+              <ul>
+                  <li><img src="cast1.jpg" alt=""></li>
+                  <li><img src="cast2.jpg" alt=""></li>
+                  <li><img src="cast3.jpg" alt=""></li>
+                  <li><img src="cast4.jpg" alt=""></li>
+                  <li><img src="cast5.jpg" alt=""></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
 
   <div class="trailer">
 
@@ -80,7 +155,6 @@
     <iframe width="560" height="315" src="{{movie_article.trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <img src="{% static 'images/close.png' %}" class="close" onclick="closeIframe();">
-
 
   </div>
 
@@ -105,6 +179,8 @@
 
         }
     </script>
+
+    <script src="{% static 'java/model.js'%}"></script>
 
 </body>
 </html>

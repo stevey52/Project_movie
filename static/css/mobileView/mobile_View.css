@@ -1,0 +1,37 @@
+@media only screen and (max-width: 600px)
+{
+    header{
+        padding: 20px;
+    }
+    .search{
+        position: relative;
+        width: calc(100% - 20%);
+        height: 0px;
+    }
+    .banner{
+        padding: 220px 20px 120px;
+    }
+    .banner .play{
+        left: 20px;
+        font-size: 1em;
+        bottom: 30px;
+    }
+    .card{
+      /* opacity: 0; */
+      width: 100px;
+      height: 0px;
+      margin-bottom: 100px;
+      padding-bottom: 100px;
+    }
+
+    .content .movieTitle span{
+        /* max-width: 550px; */
+        top: 100%;
+        color: #fff;
+        padding: 10 20px;
+        display: inline-block;
+        font-style: normal;
+        font-size: 20px;
+
+    }
+}

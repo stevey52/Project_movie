@@ -24,12 +24,12 @@
 
       </div>
     </div>
-     
+
   {% endfor %}
 
 
 <br>
- --><!-- 
+ --><!--
 <div style="text-align:center">
   <span class="dot"></span>
   <span class="dot"></span>
@@ -39,9 +39,7 @@
   <span class="dot"></span>
   <span class="dot"></span>
 </div> -->
-    
 
-</div>
 
 </section>
       <!--
@@ -50,7 +48,7 @@
       <section class="movies">
 
                 <div class="filter-bar">
-<!-- 
+<!--
           <div class="filter-dropdowns">
 
             <select name="genre" class="genre">
@@ -78,13 +76,19 @@
             <label for="featured">Featured</label> -->
 
             <input type="radio" onclick="window.location.href = '{% url 'most_watched'%}'" name="grade" id="popular">
-            <label for="popular">Popular</label>
+            <label for="popular">
+              <strong>Popular</strong>
+            </label>
 
             <input type="radio" onclick="window.location.href = '{% url 'tv_series' %}'" name="grade" id="series">
-            <label for="series">TV Series</label>
+            <label for="series">
+              <strong>TV Series</strong>
+            </label>
 
             <input type="radio" onclick="window.location.href = '{% url 'most_watched' %}'" name="grade" id="featured" >
-            <label for="featured">Most Wtched</label>
+            <label for="featured">
+            <strong>Most Watched</strong>
+            </label>
 
             <div class="checked-radio-bg"></div>
 
@@ -233,7 +237,7 @@
             <h2><strong>MOST DOWNLOADED</strong></h2>
           </button>
         </a>
-      </section>
+
     </main>
-          
+
 {% endblock %}
