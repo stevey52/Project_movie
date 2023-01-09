@@ -18,7 +18,7 @@ body{
 .card{
     position: relative;
     width: 320px;
-    height: 450px;
+    height: 370px;
     background: #ffff;
     border-radius: 10px;
     overflow: hidden;
@@ -81,17 +81,17 @@ body{
   color: #fff;
 }
 
-.card .details .ratings{
+.ratings{
   position: relative;
   padding: 5px 0;
 }
 
-.card .details .ratings .fa-star{
+.ratings .fa-star{
   color: #f7f406;
   font-size: 1em;
 }
 
-.card .details .ratings span{
+.ratings span{
   color: #fff;
   margin-left: 5px;
 }

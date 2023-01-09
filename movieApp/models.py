@@ -49,8 +49,7 @@ class Movie_article(models.Model):
     # size_2160p = models.CharField(max_length=20,default='2160p')
 
     trailer = models.CharField(max_length=200,null=True)
-    # director = models.CharField(max_length=50,default="...")
-    # director_info = models.CharField(max_length=500,null=True)
+    director = models.CharField(max_length=50,default="...")
     duration = models.CharField(max_length=10, null=True)
 
     category = models.CharField(max_length=200, default="horror", choices=category_choices)
@@ -58,7 +57,7 @@ class Movie_article(models.Model):
     body = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(default='logos.jpeg',blank=True)
-    image_bg = models.ImageField(default='static/images/cinema.jpg' ,blank=True)
+    # image_bg = models.ImageField(default='static/images/cinema.jpg' ,blank=True)
     #add author
 
 

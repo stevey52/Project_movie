@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width,
-     minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width,
+     minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>2dayMovies Hot picks</title>
 
@@ -42,30 +42,6 @@
 </div>
 
   <div class="banner">
-    <!-- {% if movie_article.image_bg != '' %} -->
-      <!-- <img src="{{movie_article.image_bg.url}}" class="bg"> -->
-      <style media="screen">
-        body{
-          background-image: url({{movie_article.image_bg.url}});
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 100vh;
-        }
-        html{
-          height:  100%;
-        }
-
-      </style>
-    <!-- {% else %}
-      <style type="text/css">
-        body{
-          background: linear-gradient(to right,
-                rgb(0, 0, 81), rgb(0, 10, 0));;
-        }
-      </style>
-
-    {% endif %} -->
-
     <div class="content">
       <h5 class="movieTitle">
             <span>{{movie_article.title}}</span>
@@ -76,10 +52,10 @@
           <span>{{movie_article.category}}</span>
           <span>{{movie_article.duration}}</span>
         </h4>
-        <p>{{movie_article.snippest}}</p>
-
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
+        <p>{{movie_article.snippest}}
+          <!-- Trigger/Open The Modal -->
+          <a id="myBtn">read more</a>
+        </p>
 
           <!-- The Modal -->
           <div id="myModal" class="modal">
@@ -104,7 +80,7 @@
         </div>
     </div>
 
-    <a class="play" onclick="toggleVideo();">
+    <a class="play" onclick="toggleVideo()">
       <img src="{% static 'images/play.png'%}">Watch Trailer</a>
   </div>
 
@@ -113,72 +89,26 @@
           <img src="{{movie_article.image.url}}" alt="">
       </div>
       <div class="details">
-          <img src="avtarlogo.png" class="logo" alt="">
           <h3>Directed by</h3>
           <h4>{{movie_article.director}}</h4>
-          <div class="ratings">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-regular fa-star"></i>
-              <span>4/5</span>
-          </div>
+
           <div class="tags">
               <span>{{movie_article.genre1}}</span>
               <span>{{movie_article.genre2}}</span>
-          </div>
-          <div class="info">
-              <p>{{movie_article.snippest}}</p>
-          </div>
-          <div class="cast">
-              <h4 style="color:#000">Cast</h4>
-              <ul>
-                  <li><img src="cast1.jpg" alt=""></li>
-                  <li><img src="cast2.jpg" alt=""></li>
-                  <li><img src="cast3.jpg" alt=""></li>
-                  <li><img src="cast4.jpg" alt=""></li>
-                  <li><img src="cast5.jpg" alt=""></li>
-              </ul>
           </div>
       </div>
   </div>
 
 
   <div class="trailer">
-
-
     <iframe width="560" height="315" src="{{movie_article.trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
     <img src="{% static 'images/close.png' %}" class="close" onclick="closeIframe();">
-
   </div>
-
 
 
 <!-- custom js link -->
 
-    <script>
-        function toggleVideo(){
-            const trailer = document.querySelector('.trailer');
-            const video = document.querySelector('iframe');
-            trailer.classList.toggle('active')
-            video.currentTime = 0;
-            video.pause();
-        }
-
-        function closeIframe(){
-          const trailer = document.querySelector('.trailer')
-          const frame = document.querySelector('iframe')
-          trailer.classList.toggle('active')
-          frame.parentNode.removeChild(frame)
-
-        }
-    </script>
+    <script src="{% static 'java/detailView.js'%}"></script>
 
     <script src="{% static 'java/model.js'%}"></script>
 

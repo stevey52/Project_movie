@@ -8,24 +8,35 @@
         width: calc(100% - 20%);
         height: 0px;
     }
+
     .banner{
         padding: 220px 20px 120px;
     }
+
     .banner .play{
         left: 20px;
         font-size: 1em;
         bottom: 30px;
     }
+
     .card{
       /* opacity: 0; */
-      width: 100px;
-      height: 0px;
-      margin-bottom: 100px;
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      margin-bottom: 300px;
+      margin-left: 80px;
       padding-bottom: 100px;
+    }
+
+    .card .poster img{
+      width: 100%;
+      /* transition: 0.5s */
     }
 
     .content .movieTitle span{
         /* max-width: 550px; */
+        margin-top: 210px;
         top: 100%;
         color: #fff;
         padding: 10 20px;
@@ -34,4 +45,27 @@
         font-size: 20px;
 
     }
+
+    .download{
+        padding-bottom:5px;
+    }
+
+    .banner .content .buttons{
+        position: absolute;
+        width: 200px;
+    }
+
+  .play{
+    padding-top: 20px;
+    margin-top: 200px;
+    visibility: hidden;
+
+  }
+
+  .buttons{
+    padding-top: 5px;
+    position: relative;
+  }
+
+
 }
