@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px, 100px;
+    z-index: 100;
+}
+
+header .logo img{
+    max-width: 150px;
+}
+
+.navigation{
+    display: flex;
+}
+
+.navigation li{
+    list-style: none;
+    margin: 0 10px;
+}
+
+.navigation li a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.navigation li:hover a{
+    color: #de0611;
+}
+
+.search{
+    position: relative;
+    width: 300px;
+    height: 0px;
+
+}
+
+.search input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 25, 0.5);
+    outline: none;
+    border-radius: 4px;
+    padding: 0 10px 0 45px;
+    backdrop-filter: blur(10px);
+
+}
+
+.search input::placeholder{
+    color: #fff;
+}
+
+.search .fa-magnifying-glass{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    padding-right: 10px;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.banner{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.banner .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+
+
+}
+
+.content{
+    position: relative;
+    z-index: 1;
+    max-width: 550px;
+}
+
+.content .movieTitle span{
+    /* max-width: 550px; */
+    top: 100%;
+    color: #fff;
+    padding: 10 20px;
+    display: inline-block;
+    font-style: normal;
+    font-size: 50px;
+
+}
+
+.banner .content h4{
+    color: rgba(255, 255, 2555, 0.5);
+    font-weight: 500;
+}
+
+.banner .content h4 span{
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 2555, 0.5);
+}
+
+.banner .content h4 span:first-child{
+    padding-left: 0;
+}
+
+.banner .content h4 span:last-child{
+    border-right: none;
+}
+
+.banner .content h4 span i{
+    background: #de0611;
+    color: #fff;
+    padding: 0 8px;
+    display: inline-block;
+    font-style: normal;
+    border-radius: 2px;
+}
+
+.banner .content p{
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #fff;
+    margin: 10px 0 20px;
+}
+
+.banner .content .buttons{
+    position: relative;
+}
+.banner .content .buttons a{
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+/*    background: #de0611;*/
+    color: #fff;
+    padding: 6px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: !important;
+}
+.banner .content .buttons a:nth-child(1){
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 2555, 0.1);
+
+}
+.banner .content .buttons a:hover:nth-child(1)
+{
+    background: #de0611;
+}
+
+.banner .content .buttons a:nth-child(2){
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 2555, 0.1);
+
+}
+.banner .content .buttons a:hover:nth-child(2)
+{
+    background: #de0611;
+}
+
+.banner .content .buttons a:nth-child(3){
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 2555, 0.1);
+
+}
+.banner .content .buttons a:hover:nth-child(3)
+{
+    background: #de0611;
+}
+
+.download{
+    padding-bottom:10px;
+}
+
+
+.play{
+    position: absolute;
+    bottom: 55px;
+    left: 100px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.play img {
+    margin-right: 10px;
+    max-width: 50px;
+}
+
+.trailer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.trailer.active{
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.trailer video{
+    max-width: 900px;
+    outline: none;
+}
+
+.close{
+    position: absolute;
+    top: 150px;
+    right: 200px;
+    cursor: pointer;
+    filter: invert(1);
+    max-width: 22px;
+}
+
+@media (max-width: 991px){
+    header{
+        padding: 20px 50px;
+        flex-direction: column;
+    }
+    .navigation{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+
+
+    .content .movieTitle span{
+        /* max-width: 550px; */
+        top: 100%;
+        color: #fff;
+        padding: 10 20px;
+        display: inline-block;
+        font-style: normal;
+        font-size: 20px;
+
+    }
+
+    .card{
+      /* opacity: 0; */
+      position: absolute;
+      width: 200px;
+      height: 100px;
+      margin-top:110px;
+      margin-bottom: 20px;
+      margin-left: 80px;
+
+
+    }
+
+    .card .poster img{
+      width: 100%;
+      /* transition: 0.5s */
+    }
+
+
+    .banner{
+        padding: 100px 50px;
+    }
+    .banner .play{
+        left: 50px;
+        font-size: 1em;
+    }
+    .play img{
+        margin-right: 10px;
+        max-width: 40px;
+    }
+    .trailer video{
+        max-width: 90%;
+    }
+}

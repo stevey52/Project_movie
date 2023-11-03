@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2dayMovies Hot picks</title>
+
+    <!-- awsome font cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- link the css -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/detailView.css' %}">
+
+</head>
+<body>
+
+  <header>
+    <a href="{% url 'homeView' %}" class="logo"> <img src="{% static 'images/logo.png' %}"></a>
+
+    <ul class="navigation">
+      <li><a href="{% url 'homeView' %}">Home</a></li>
+      <li><a href="{% url 'tv_series'%}">TV Shows</a></li>
+      <li><a href="{% url 'homeView' %}">Movies</a></li>
+      <!-- <li><a href="#">Latest</a></li> -->
+      <!-- <li><a href="#">My List</a></li> -->
+    </ul>
+
+    <div class="search">
+      <input type="text">
+    </div>
+  </header>
+
+  <div class="banner">
+    {% if series.image_bg != '' %}
+      <img src="{{series.image_bg.url}}" class="bg">
+    {% else %}
+        <img src="{% static 'images/cinema.jpg' %}" class="bg">
+
+    {% endif %}
+
+    <div class="content">
+      <h2 class="movieTitle">
+
+            <span>{{series.title}} </span>
+            {% if series.episode != None %}
+              <span>E{{series.episode}}</span>
+            {% else %}
+            <span>Complete</span>
+            {% endif %}
+            </h2>
+
+
+
+        <h4>
+          <!-- <span>{{movie_article.year}}</span> -->
+          <span>Genre: {{series.genre}}</span>
+          <span>{{series.ratings}}</span>
+        </h4>
+        <!-- <p>{{movie_article.body}}</p> -->
+
+        <h4 class="download">Download Torrent</h4>
+
+
+        <div class="buttons">
+          <a onclick="location.href='{{series.download}}'">
+            <i class="fa-solid fa-download"></i></i> Download </a>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

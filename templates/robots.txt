@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://2daymoviez.pythonanywhere.com/sitemap.xml

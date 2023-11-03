@@ -1,68 +1,184 @@
+
 <!DOCTYPE html>
 {% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <!-- <meta charset="utf-8"> -->
-    <meta charset="UTF-8" />
-    <title>2dayMovies Hot Picks</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<html lang="en">
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<link rel="stylesheet" href="{% static 'css/homeView.css'%}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<script src="{% static 'java/home.js'%}"></script>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Movies are the perfect way to escape reality
+  and transport yourself into another world. Whether you're looking for action,
+  comedy, drama, or romance, there's a movie out there for everyone. And thanks to
+  www.2daymovies.com, you can easily find and download all the latest releases
+  with just a single click. So what are you waiting for? Head on over to www.2daymovies.com
+  and start exploring the world of movies today!">
 
-<script src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
-  <!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
-  </head>
-  <body>
-    <ul class="nav nav-pills">
-  <!-- <li role="presentation" ><a href="#"></a></li> -->
-  <li role="presentation"><a href="{%url 'homeView'%}">2dayMovies</a></li>
-  <li role="presentation"><a href="{%url 'upcoming'%}">Upcoming</a></li>
-  <li role="presentation"><a href="{% url 'contact_us'%}">contact</a></li>
-</ul>
-
-<form class="navbar-form navbar-right" action="{% url 'search_results' %}" method="GET">
-  {% csrf_token %}
-          <input type="text" class="form-control" value='{{ request.GET.q}}' placeholder="Search"
-          name="q">
-        <button type="submit" class="btn btn-success">Search</button>
-      </form>
-
-<a href="{% url 'homeView'%}"><img id="HomePgae_Logo" src="{% static "images/2dayMovies-logos_black.png"%}" alt="" style="width:15vw;"></a>
+  <!--adcash code-->
+    <meta name="a.validate.02" content="JKcemJZYDDBZO52wylsIqSFLmrkfmXxIXhal" />
 
 
 
-  <style media="screen">
-    body{
-      background-color: #fafcfc;
-    }
-  </style>
+  <title>2dayMovies Hot picks</title>
+
+
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/media_query.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/homeView.css'%}">
+
+
+  <!-- <link rel="stylesheet" href="{% static 'css/variable.css' %}"> -->
+
+
+  <!-- google font link -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+
+
+   <!-- google analytics for tracking web activies -->
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VFJNWFZNFY"></script>
+
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-VFJNWFZNFY');
+    </script>
+</head>
+
+<body>
+
+  <!-- main container -->
+
+  <div class="container">
+
+      <!-- - #HEADER SECTION -->
+
+    <header class="">
+      <div class="navbar">
+
+          <!-- - menu button for small screen -->
+        <button class="navbar-menu-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+
+
+        <a href="{%url 'homeView'%}" class="navbar-brand indicator">
+          <!-- <strong>2dayMovies</strong> -->
+          <img class="logo" src="{% static 'images/logo.png'%}" alt="" style="max-width: 120px;">
+        </a>
+
+
+         <!-- navbar navigation -->
+
+        <nav class="">
+          <ul class="navbar-nav">
+            <!-- <li> <a href="{%url 'homeView'%}" class="navbar-link">Home</a> </li> -->
+            <li> <a href="#category" class="navbar-link">Category</a> </li>
+            <li> <a href="{% url 'tv_series'%}" class="navbar-link">TV Series</a> </li>
+
+            <li> <a href="{% url 'sports_view' %}" class="navbar-link">Sports News</a> </li>
+
+            <li><a href="{% url 'blog' %}" class="navbar-link">Blogs</a></li>
+          </ul>
+        </nav>
+
+
+          <!-- search and sign-in -->
+
+
+        <div class="navbar-actions">
+
+          <form action="{% url 'search_results' %}" class="navbar-form" method="GET">
+            {% csrf_token %} {{forms.as_p}}
+            <input type="text" value='{{ request.GET.q}}' name="q" placeholder="| Search" class="navbar-form-search" required>
+
+            <button type="submit" class="navbar-form-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
+            <button class="navbar-form-close">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
+          </form>
+
+
+            <!-- - search button for small screen -->
+
+
+          <button class="navbar-search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+          <a href="#" class="navbar-signin">
+            <span>Sign in</span>
+            <ion-icon name="log-in-outline"></ion-icon>
+          </a>
+
+        </div>
+
+      </div>
+
+    </header>
+
 
     {% block content%}
 
 
-    {%endblock%}
+    {% endblock %}
 
 
 
 
-<!-- <footer>Mtawa Technologies.inc (c) 2021.</footer> -->
-  </body>
-  
+    <!--
+      - FOOTER SECTION
+    -->
+<footer>
+      <div class="footer-copyright">
+
+        <div class="container">
+        <div class="wrapper">
+          <span><strong>Support Email: 2daymoviez@gmail.com</strong></span>
+          <!-- <a href="#">Terms and conditions</a> -->
+        </div>
+      </div>
+
+        <div class="copyright">
+          <p>copyright 2023 @Mtawatechs.inc</p>
+        </div>
+
+  </div>
+
+    </footer>
+
+  </div>
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="{% static 'java/main.js' %}"></script>
+  <script src="{% static 'java/homeView.js' %}"></script>
+
+
+    <!-- - ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+  <!--adCash code-->
+<script type="text/javascript" data-adel="atag" src="//acscdn.com/script/atg.js" czid="rxotds1lu"></script>
+
+</body>
+
 </html>

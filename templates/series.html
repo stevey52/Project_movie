@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+
+<center>
+    <h2> Tv series  </h2>
+
+      <!-- movies grid -->
+<section class="movies">
+
+      <div class="movies-grid">
+        {% for Series in object_list %}
+
+        <div class="movie-card">
+
+          <div class="card-head">
+            <img src="{{Series.image.url}}" alt="error" class="card-img">
+
+
+            <div class="card-overlay">
+
+              <div class="bookmark">
+                <ion-icon name="bookmark-outline"></ion-icon>
+              </div>
+
+              <div class="rating">
+                <ion-icon name="star-outline"></ion-icon>
+                <span>Ep.{{Series.episode}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card-body">
+            <a href="{%url 'series_View' Series.slug%}">
+            <h3 class="card-title">{{Series.title}}</h3>
+            {% if Series.episode != None%}
+                <span>E:{{Series.episode}}</span>
+            {% else %}
+                <span>Complete</span>
+                {% endif%}
+            </a>
+
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+      </section>
+
+
+</center>
+
+
+
+{% endblock %}

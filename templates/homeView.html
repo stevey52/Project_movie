@@ -1,70 +1,193 @@
-{% extends 'base.html'%}
-{% load static%}
-
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content%}
-<!-- #creating the next and previous page -->
+
+      <!-- - MAIN SECTION -->
+       <!-- <link rel="stylesheet" href="{% static 'css/slider.css' %}"> -->
+
+    <main>
+<div>
 
 
-      {% for movie in page_obj %}
-    <!-- {# Each "movie" is a Movie_article model object. #} -->
-    {{ movie.full_name|upper }}
-{% endfor %}
+      <!-- #BANNER SECTION -->
+      <section class="banner">
 
-<div class="pagination"> 
+
+</div>
+
+<section>
+      <!--
+        - #MOVIES SECTION
+      -->
+      <section class="movies">
+
+                <div class="filter-bar">
+
+          <div class="filter-radios">
+
+           <!--  <input type="radio" name="grade" id="featured" >
+            <label for="featured">Featured</label> -->
+
+            <input type="radio" onclick="window.location.href = '{% url 'most_watched'%}'" name="grade" id="popular">
+            <label for="popular">
+                <strong>Popular</strong>
+                </label>
+
+            <input type="radio" onclick="window.location.href = '{% url 'tv_series' %}'" name="grade" id="series">
+            <label for="series">
+                <strong>TV Series</strong>
+                </label>
+
+
+            <div class="checked-radio-bg"></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- movies grid -->
+
+        <div class="movies-grid">
+          {% for Movie_article in object_list %}
+
+          <div class="movie-card">
+
+            <div class="card-head">
+              <img src="{{Movie_article.image.url}}" alt="error" class="card-img">
+
+              <div class="card-overlay">
+
+                <div class="bookmark">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+
+                <div class="rating">
+                  <ion-icon name="star-outline"></ion-icon>
+                  <span>{{Movie_article.ratings}}</span>
+                </div>
+
+                <div class="play">
+                  <span class="genre">{{Movie_article.genre1}}</span>
+                  <span class="genre">{{Movie_article.genre2}}</span>
+                  <span class="genre">{{Movie_article.genre3}}</span>
+
+                  <a href="{% url 'detailView' Movie_article.slug %}">
+                    <ion-icon name="play-circle-outline"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="card-body">
+              <a href="{% url 'detailView' Movie_article.slug%}">
+              <h3 class="card-title">{{Movie_article.title}}</h3>
+              </a>
+
+              <div class="card-info">
+                <span class="year">{{Movie_article.year}}</span>
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Next and previous page -->
+        <div class="pagination">
     <span class="step-links">
+
         {% if page_obj.has_previous %}
-            <a id="nextPrevious" href="?page=1">&laquo; first</a>
-            <a id="nextPrevious" href="?page={{ page_obj.previous_page_number }}">| previous</a>
+        <span class="current">
+            <button class="load-more" name="button">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</button>
+        </span>
+        <div class="btn-group">
+
+            <a href="?page=1">
+              <!-- &laquo; -->
+              <button class="load-more" id="first-button" type="button" name="button">First</button>
+            </a>
+
+            <a href="?page={{ page_obj.previous_page_number }}">
+              <button class="load-more" id="back-button" type="button" name="button">Back</button>
+            </a>
+        </div>
         {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
         {% if page_obj.has_next %}
-            <a id="nextPrevious" href="?page={{ page_obj.next_page_number }}">next</a> |
-            <a  id="nextPrevious" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        <div class="btn-group2">
+
+          <a href="?page={{ page_obj.paginator.num_pages }}">
+            <button class="load-more" id="last-button" type="button" name="button">Last</button>
+            <!-- &raquo; -->
+          </a>
+
+            <a href="?page={{ page_obj.next_page_number }}">
+              <button class="load-more" id="next-button" type="button" name="button">next</button>
+            </a>
+        </div>
         {% endif %}
     </span>
 </div>
-
-
-  <!-- <div class="container"> -->
-
-
-    <h1 align="center">Get The Hot Picks</h1>
+      </section>
 
 
 
-    {% for Movie_article in object_list %}
+         <!-- #CATEGORY SECTION -->
 
-    <div class="Movie_article_entry">
+      <section class="category" id="category">
 
-    <div class="col-lg-3 col-sm-4 row">
-      <ul id="rig">
-        <li>
-          <div class="rig-cell">
+        <h2 class="section-heading"> Movie Category</h2>
 
-          <img id="myImg" class="rig-img" src="{{Movie_article.image.url}}" alt="No Image" style="width:18.5vw;">
-          <span class="rig-overlay"></span>
-          <span class="rig-text">
-            <h4>{{Movie_article.ratings}}</h4>
-            <h4>{{Movie_article.genre1}}</h4>
-            <h4>{{Movie_article.genre2}}</h4>
-            <h4>{{Movie_article.genre3}}</h4>
-            <button class="btn-success btn-lg" type="button" onclick="location.href='{% url 'detailView' Movie_article.slug%}'" name="button">View Movie</button>
-          </span>
-          <h2 align="center" style="font-size:16px">{{Movie_article.title}}</h2>
-          <!-- <p>{{Movie_article.date}}</p> -->
+        <div class="category-grid">
+
+          <div class="category-card">
+            <img src="{% static 'images/action.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="{% url 'action_movies' %}">Action</a>
+            </div>
+            <div class="total">100</div>
           </div>
-    </li>
-    </ul>
-    </div>
 
-    {% endfor%}
-      </div>
+          <div class="category-card">
+            <img src="{% static 'images/comedy.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="{% url 'comedy_movies'%}">Comedy&Drama</a>
+            </div>
+            <div class="total">100</div>
+          </div>
+
+          <div class="category-card">
+            <img src="{% static 'images/animated.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="{% url 'animated_movies'%}">Animated</a>
+            </div>
+            <div class="total">20</div>
+          </div>
+
+          <div class="category-card">
+            <img src="{% static 'images/horror.jpg'%}" alt="" class="card-img">
+            <div class="name">
+              <a href="{% url 'horror_movies'%}">Horror</a>
+            </div>
+            <div class="total">80</div>
+          </div>
+
+        </div>
+      </section>
 
 
+         <!-- load more button -->
+        <a style="padding-top: 50px;" href="{% url 'most_watched'%}">
+          <button class="load-more">
+            <h2><strong>MOST DOWNLOADED</strong></h2>
+          </button>
+        </a>
+      </section>
+    </main>
 
-{% endblock%}
+{% endblock %}

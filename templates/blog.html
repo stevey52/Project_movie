@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Insights Blog</title>
+
+
+   <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+</head>
+<body>
+  <header>
+    <h1>In-sights Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'homeView' %}">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+		{% for blog in object_list%}
+
+			<h2>{{blog.title}}</h2>
+			<br/>
+      <img src="{{blog.image.url}}" alt="">
+      <!-- instera of image put the adcash link -->
+
+      <p>Posted: {{blog.date}}</p>
+			<p>{{blog.body}}</p>
+			<a href="{{blog.link}}">Read more</a>
+
+			<br/>
+			<br/>
+
+
+		{% endfor %}
+    </article>
+</main>
+
+  <footer>
+    <p>&copy; 2023 Mtawatechs. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
